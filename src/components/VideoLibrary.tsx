@@ -102,8 +102,11 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
         setUploadError(`File "${file.name}" is not a supported video format (MP4, MOV, WEBM).`);
         return;
       }
-      if (file.size > 300 * 1024 * 1024) {
-        setUploadError(`File "${file.name}" exceeds the 300MB maximum size limit.`);
+      // Cloud Run / Serverless request payload maximum limit is 32MB per HTTP request
+      if (file.size > 32 * 1024 * 1024) {
+        setUploadError(
+          `"${file.name}" is ${(file.size / (1024 * 1024)).toFixed(1)}MB. Cloud Run proxy limits individual uploads to 32MB. Please upload videos under 32MB.`
+        );
         return;
       }
       validFiles.push(file);
@@ -113,7 +116,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
 
     try {
       setUploadError(null);
-      const totalBytes = validFiles.reduce((acc, f) => acc + f.size, 0);
+      const totalBytes = validFiles.reduce((acc: number, f: File) => acc + f.size, 0);
       setUploadProgress({
         percentage: 0,
         speedFormatted: 'Starting upload...',
@@ -125,7 +128,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
         status: 'uploading',
       });
 
-      await onUploadVideos(validFiles, (info) => {
+      await onUploadVideos(validFiles, (info: any) => {
         setUploadProgress({
           percentage: info.percentage,
           speedFormatted: info.speedFormatted,
@@ -138,7 +141,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
         });
       });
 
-      setUploadProgress((prev) =>
+      setUploadProgress((prev: any) =>
         prev
           ? {
               ...prev,
@@ -265,7 +268,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
   // Filtered & Sorted Videos
   const filteredVideos = useMemo(() => {
     return videos
-      .filter((vid) => {
+      .filter((vid: VideoRecord) => {
         if (searchQuery.trim()) {
           const q = searchQuery.toLowerCase();
           const matchesName = vid.originalName.toLowerCase().includes(q);
@@ -277,7 +280,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
         }
         return true;
       })
-      .sort((a, b) => {
+      .sort((a: VideoRecord, b: VideoRecord) => {
         if (sortBy === 'newest') {
           return new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime();
         }
@@ -535,7 +538,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {filteredVideos.map((vid) => {
+              {filteredVideos.map((vid: VideoRecord) => {
                 const sizeMb = (vid.fileSize / (1024 * 1024)).toFixed(1);
                 const dateStr = new Date(vid.uploadedAt).toLocaleDateString(undefined, {
                   month: 'short',

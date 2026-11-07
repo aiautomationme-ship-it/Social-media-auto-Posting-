@@ -18,7 +18,7 @@ export const FlowingGradientBackground: React.FC = () => {
     if (typeof navigator !== 'undefined' && 'gpu' in navigator && navigator.gpu) {
       navigator.gpu
         .requestAdapter()
-        .then((adapter) => {
+        .then((adapter: any) => {
           setHasWebGPU(!!adapter);
         })
         .catch(() => {
@@ -45,15 +45,15 @@ export const FlowingGradientBackground: React.FC = () => {
     let targetMousePos = { x: 0.5, y: 0.5 };
 
     const handleResize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      // Keep DPR at 1.0 max to ensure 60fps on low-end mobile/laptop devices
       const width = window.innerWidth;
       const height = window.innerHeight;
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
+      canvas.width = width;
+      canvas.height = height;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       if (gl) {
-        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.viewport(0, 0, width, height);
       }
     };
     handleResize();
@@ -117,10 +117,17 @@ export const FlowingGradientBackground: React.FC = () => {
         uniform vec4 u_ripples[8];
         uniform int u_ripple_count;
 
-        vec3 colorIvory = vec3(0.972, 0.965, 0.945);
-        vec3 colorForest = vec3(0.121, 0.427, 0.321);
-        vec3 colorAmber = vec3(0.741, 0.443, 0.192);
-        vec3 colorWarmCream = vec3(0.952, 0.937, 0.910);
+        vec3 colorSilverLight = vec3(0.93, 0.94, 0.95);
+        vec3 colorSilverMid   = vec3(0.78, 0.80, 0.82);
+        vec3 colorSmokeCharcoal = vec3(0.18, 0.20, 0.22);
+        vec3 colorSteel       = vec3(0.50, 0.52, 0.55);
+
+        // Simple hash for background dust/specks like in reference image
+        float hash(vec2 p) {
+          p = fract(p * vec2(123.34, 456.21));
+          p += dot(p, p + 45.32);
+          return fract(p.x * p.y);
+        }
 
         void main() {
           vec2 uv = v_uv;
@@ -144,8 +151,8 @@ export const FlowingGradientBackground: React.FC = () => {
             if (waveDist < 0.2) {
               float ring = sin(waveDist * 40.0 - age * 8.0) * exp(-waveDist * 18.0) * (1.0 - age);
               vec2 dir = normalize(p - ripPos + 0.0001);
-              rippleOffset += dir * ring * 0.035 * intensity;
-              rippleHighlight += ring * 0.12 * intensity;
+              rippleOffset += dir * ring * 0.04 * intensity;
+              rippleHighlight += ring * 0.16 * intensity;
             }
           }
 
@@ -153,25 +160,40 @@ export const FlowingGradientBackground: React.FC = () => {
           vec2 flowP = displacedUv;
           flowP.x *= aspect;
 
-          float t = u_time * 0.18;
-          float wave1 = sin(flowP.x * 2.2 + t * 0.8) * cos(flowP.y * 1.8 - t * 0.6);
-          float wave2 = cos(flowP.x * 1.6 - t * 0.5) * sin(flowP.y * 2.4 + t * 0.7);
-          float wave3 = sin((flowP.x + flowP.y) * 1.4 + t * 0.9);
+          float t = u_time * 0.20;
+          float wave1 = sin(flowP.x * 2.4 + t * 0.8) * cos(flowP.y * 2.0 - t * 0.6);
+          float wave2 = cos(flowP.x * 1.8 - t * 0.5) * sin(flowP.y * 2.6 + t * 0.7);
+          float wave3 = sin((flowP.x + flowP.y) * 1.6 + t * 0.9);
 
           vec2 mouseAspect = u_mouse;
           mouseAspect.x *= aspect;
           float mouseDist = distance(flowP, mouseAspect);
-          float mouseGlow = exp(-mouseDist * 2.8) * 0.22;
+          float mouseGlow = exp(-mouseDist * 2.5) * 0.25;
+
+          // Radial vignette similar to reference image (lighter center, darker corners)
+          vec2 center = vec2(0.5 * aspect, 0.5);
+          float centerDist = distance(flowP, center);
+          float vignette = smoothstep(0.15, 0.95, centerDist);
 
           float mix1 = clamp(wave1 * 0.5 + 0.5, 0.0, 1.0);
           float mix2 = clamp(wave2 * 0.5 + 0.5, 0.0, 1.0);
           float mix3 = clamp(wave3 * 0.5 + 0.5, 0.0, 1.0);
 
-          vec3 bg = colorIvory;
-          bg = mix(bg, colorWarmCream, mix1 * 0.35);
-          bg = mix(bg, colorForest, mix2 * 0.065 + mouseGlow * 0.04);
-          bg = mix(bg, colorAmber, mix3 * 0.075 + mouseGlow * 0.05);
-          bg += vec3(rippleHighlight * 0.45, rippleHighlight * 0.40, rippleHighlight * 0.32);
+          // Flowing silver-smoke gradient
+          vec3 bg = mix(colorSilverLight, colorSilverMid, mix1 * 0.5 + vignette * 0.4);
+          bg = mix(bg, colorSmokeCharcoal, mix2 * 0.14 + vignette * 0.25);
+          bg = mix(bg, colorSteel, mix3 * 0.12 + mouseGlow * 0.15);
+
+          // Soft ripple shimmer
+          bg += vec3(rippleHighlight * 0.25);
+
+          // Subtle floating particles / grain texture inspired by reference image
+          vec2 grid = floor(uv * 180.0);
+          float h = hash(grid);
+          if (h > 0.985) {
+            float speck = sin(u_time * 1.5 + h * 6.28) * 0.5 + 0.5;
+            bg -= vec3(0.08 * speck);
+          }
 
           gl_FragColor = vec4(bg, 1.0);
         }
@@ -222,16 +244,30 @@ export const FlowingGradientBackground: React.FC = () => {
             const uRippleCount = gl.getUniformLocation(program, 'u_ripple_count');
 
             let startTime = performance.now();
+            let lastFrameTime = startTime;
 
             const render = () => {
               if (!gl) return;
+              // Skip rendering when document is in background to save 100% CPU/GPU on low-end devices
+              if (typeof document !== 'undefined' && document.hidden) {
+                animationFrameId = requestAnimationFrame(render);
+                return;
+              }
+
               const now = performance.now();
+              // Cap at 45-60fps max for smooth buttery performance without overheating
+              if (now - lastFrameTime < 16) {
+                animationFrameId = requestAnimationFrame(render);
+                return;
+              }
+              lastFrameTime = now;
+
               const elapsed = (now - startTime) * 0.001;
 
               mousePos.x += (targetMousePos.x - mousePos.x) * 0.08;
               mousePos.y += (targetMousePos.y - mousePos.y) * 0.08;
 
-              ripples = ripples.filter((r) => now - r.birth < r.duration);
+              ripples = ripples.filter((r: Ripple) => now - r.birth < r.duration);
 
               const rippleData: number[] = [];
               for (let i = 0; i < 8; i++) {
@@ -277,22 +313,22 @@ export const FlowingGradientBackground: React.FC = () => {
   return (
     <div className="fixed inset-0 pointer-events-none -z-10 w-full h-full overflow-hidden select-none">
       {hasWebGPU ? (
-        /* Shaders Package: WebGPU FlowingGradient + CursorRipples */
-        <Shader className="w-full h-full opacity-65">
+        /* Shaders Package: WebGPU FlowingGradient + CursorRipples with Monochrome/Silver/Smoke Palette */
+        <Shader className="w-full h-full opacity-80">
           <FlowingGradient
-            colorA="#F8F6F1"
-            colorB="#F4F1EB"
-            colorC="#DF9B52"
-            colorD="#1F6D52"
+            colorA="#F3F4F6"
+            colorB="#D1D5DB"
+            colorC="#9CA3AF"
+            colorD="#1F242D"
             colorSpace="oklch"
-            speed={0.45}
+            speed={0.4}
             distortion={0.35}
           />
           <CursorRipples
             intensity={8}
             decay={9}
             radius={0.45}
-            chromaticSplit={0.3}
+            chromaticSplit={0.15}
             edges="stretch"
           />
         </Shader>
@@ -304,6 +340,23 @@ export const FlowingGradientBackground: React.FC = () => {
           aria-hidden="true"
         />
       )}
+      {/* Subtle corner cross accents and vignette atmosphere matching user's reference image */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Top-Right stylized geometric cross */}
+        <div className="absolute -top-10 -right-10 w-44 h-44 opacity-25 filter blur-[0.5px]">
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-14 bg-gradient-to-r from-transparent via-[#4B5563] to-[#111827] rounded-sm transform rotate-45" />
+          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-14 bg-gradient-to-b from-transparent via-[#4B5563] to-[#111827] rounded-sm transform rotate-45" />
+        </div>
+
+        {/* Bottom-Left stylized geometric cross */}
+        <div className="absolute -bottom-10 -left-10 w-44 h-44 opacity-25 filter blur-[0.5px]">
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-14 bg-gradient-to-r from-[#111827] via-[#4B5563] to-transparent rounded-sm transform rotate-45" />
+          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-14 bg-gradient-to-b from-[#111827] via-[#4B5563] to-transparent rounded-sm transform rotate-45" />
+        </div>
+
+        {/* Cinematic radial vignette (light center, darker smoky borders) */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(17,24,39,0.08)_100%)] pointer-events-none" />
+      </div>
     </div>
   );
 };

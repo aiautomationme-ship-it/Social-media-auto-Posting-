@@ -10,22 +10,47 @@ import type {
 
 const USER_ID = 'user_default';
 
-async function fetchJson<T>(url: string, options: RequestInit = {}): Promise<T> {
+async function fetchJson<T>(url: string, options: RequestInit = {}, retries = 3, backoffMs = 800): Promise<T> {
   const headers = {
     'Content-Type': 'application/json',
     'x-user-id': USER_ID,
     ...(options.headers || {}),
   };
 
-  const response = await fetch(url, { ...options, headers });
-  if (!response.ok) {
-    const errorBody = await response.json().catch(() => ({}));
-    throw new Error(errorBody.error || `Request failed with status ${response.status}`);
+  try {
+    const response = await fetch(url, { ...options, headers });
+    if (response.status === 429 && retries > 0) {
+      // Exponential backoff with jitter on Cloud Run proxy rate limiting
+      await new Promise((r) => setTimeout(r, backoffMs + Math.random() * 300));
+      return fetchJson<T>(url, options, retries - 1, backoffMs * 2);
+    }
+    if (!response.ok) {
+      const errorBody = await response.json().catch(() => ({}));
+      throw new Error(errorBody.error || `Request failed with status ${response.status}`);
+    }
+    return response.json();
+  } catch (err: any) {
+    if (err.message && err.message.includes('429') && retries > 0) {
+      await new Promise((r) => setTimeout(r, backoffMs + Math.random() * 300));
+      return fetchJson<T>(url, options, retries - 1, backoffMs * 2);
+    }
+    throw err;
   }
-  return response.json();
 }
 
 export const api = {
+  // Consolidated Bootstrap data (single network roundtrip, eliminates 429 bursts)
+  async getBootstrapData(month: number, year: number): Promise<{
+    user: { id: string; email: string; name: string; authenticated: boolean };
+    stats: DashboardStats;
+    videos: VideoRecord[];
+    posts: SocialPost[];
+    platforms: Record<PlatformType, PlatformConnection>;
+    activities: ActivityLog[];
+  }> {
+    return fetchJson(`/api/dashboard/bootstrap?month=${month}&year=${year}`);
+  },
+
   // Current user info
   async getCurrentUser() {
     return fetchJson<{ id: string; email: string; name: string; authenticated: boolean }>(
@@ -172,6 +197,12 @@ export const api = {
             reject(new Error('Invalid response format from server'));
           }
         } else {
+          if (xhr.status === 413) {
+            reject(
+              new Error('File exceeds the 32MB upload limit enforced by the serverless gateway. Please select a video under 32MB.')
+            );
+            return;
+          }
           try {
             const err = JSON.parse(xhr.responseText);
             reject(new Error(err.error || `Upload failed with HTTP ${xhr.status}`));

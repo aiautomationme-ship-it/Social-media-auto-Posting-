@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Navbar } from './components/Navbar.tsx';
 import { MonthlyTargetCard } from './components/MonthlyTargetCard.tsx';
-import { PlatformOverview } from './components/PlatformOverview.tsx';
 import { VideoLibrary } from './components/VideoLibrary.tsx';
 import { PublishingCalendar } from './components/PublishingCalendar.tsx';
 import { PublishingHistory } from './components/PublishingHistory.tsx';
@@ -53,7 +52,7 @@ export default function App() {
     setTimeout(() => setToastMessage(null), 4000);
   };
 
-  // Fetch all initial data
+  // Fetch all initial data via single consolidated bootstrap endpoint
   const loadData = useCallback(
     async (isBackground = false) => {
       try {
@@ -61,24 +60,20 @@ export default function App() {
         if (!isBackground) setIsLoading(true);
         else setRefreshing(true);
 
-        const [userRes, statsRes, videosRes, postsRes, platformsRes, activitiesRes] = await Promise.all([
-          api.getCurrentUser().catch(() => ({ email: 'aiautomationme@gmail.com' })),
-          api.getDashboardStats(selectedMonth, selectedYear),
-          api.getVideos(),
-          api.getPosts(),
-          api.getPlatforms(),
-          api.getActivityLogs(100).catch(() => []),
-        ]);
+        const data = await api.getBootstrapData(selectedMonth, selectedYear);
 
-        if (userRes.email) setUserEmail(userRes.email);
-        setStats(statsRes);
-        setVideos(videosRes);
-        setPosts(postsRes);
-        setPlatforms(platformsRes);
-        setActivities(activitiesRes.length > 0 ? activitiesRes : statsRes.recentActivity || []);
+        if (data.user?.email) setUserEmail(data.user.email);
+        setStats(data.stats);
+        setVideos(data.videos || []);
+        setPosts(data.posts || []);
+        setPlatforms(data.platforms || ({} as any));
+        setActivities(data.activities || []);
       } catch (err: any) {
         console.error('Failed to load SocialFlow data:', err);
-        setLoadError(err?.message || 'Failed to load data from server');
+        // Only set blocking load error if initial load failed without data
+        if (!isBackground) {
+          setLoadError(err?.message || 'Failed to load data from server');
+        }
       } finally {
         setIsLoading(false);
         setRefreshing(false);
@@ -89,10 +84,13 @@ export default function App() {
 
   useEffect(() => {
     loadData();
-    // Auto-refresh periodically to reflect background scheduler publishing
+    // Auto-refresh periodically to reflect background scheduler publishing (15s cadence prevents 429s)
     const interval = setInterval(() => {
-      loadData(true);
-    }, 8000);
+      // Only refresh if tab is active and visible
+      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+        loadData(true);
+      }
+    }, 15000);
     return () => clearInterval(interval);
   }, [loadData]);
 
@@ -232,8 +230,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F6F1] text-[#0F172A] flex flex-col font-sans selection:bg-[#1F6D52] selection:text-white relative">
-      {/* Flowing liquid gradient with interactive cursor ripple waves */}
+    <div className="min-h-screen bg-transparent text-[#111827] flex flex-col font-sans selection:bg-[#111827] selection:text-white relative">
+      {/* Flowing liquid gradient with interactive cursor ripple waves & silver-smoke ambiance */}
       <FlowingGradientBackground />
 
       {/* Top Persistent Navigation with single global Create & Schedule action */}
@@ -312,9 +310,6 @@ export default function App() {
               onDeleteTarget={handleDeleteTarget}
               isLoading={isLoading}
             />
-
-            {/* Publishing Destinations Overview Card (Concise summary values, no duplicate create buttons) */}
-            <PlatformOverview overview={stats.platformOverview} />
           </div>
         )}
 

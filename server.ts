@@ -169,6 +169,34 @@ async function startServer() {
     }
   });
 
+  // Consolidated Bootstrap Endpoint (Prevents Cloud Run 429 rate bursts)
+  app.get('/api/dashboard/bootstrap', (req, res) => {
+    try {
+      const userId = getUserId(req);
+      const now = new Date();
+      const month = req.query.month ? parseInt(req.query.month as string, 10) : now.getMonth() + 1;
+      const year = req.query.year ? parseInt(req.query.year as string, 10) : now.getFullYear();
+
+      const user = db.getUser(userId) || { id: userId, email: 'aiautomationme@gmail.com', name: 'Creator', authenticated: true };
+      const stats = db.getDashboardStats(userId, month, year);
+      const videos = db.getVideos(userId);
+      const posts = db.getPosts(userId);
+      const platforms = db.getPlatforms(userId);
+      const activities = db.getActivities(userId, 50);
+
+      res.json({
+        user: { id: user.id, email: user.email, name: user.name, authenticated: true },
+        stats,
+        videos,
+        posts,
+        platforms,
+        activities,
+      });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   // Platform Accounts & Connections
   app.get('/api/platforms', (req, res) => {
     const userId = getUserId(req);

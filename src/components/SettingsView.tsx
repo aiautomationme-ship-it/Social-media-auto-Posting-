@@ -153,7 +153,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
       const cur = platformWebhooks[plat];
       if (cur && cur.includes('/webhook-test/')) {
         const prod = cur.replace('/webhook-test/', '/webhook/');
-        setPlatformWebhooks((prev) => ({ ...prev, [plat]: prod }));
+        setPlatformWebhooks((prev: { tiktok: string; instagram: string; facebook: string }) => ({ ...prev, [plat]: prod }));
       }
     } else {
       if (webhookUrl && webhookUrl.includes('/webhook-test/')) {
@@ -731,7 +731,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#DDD7CD]/50">
-                    {webhookLogs.map((log, idx) => (
+                    {webhookLogs.map((log: any, idx: number) => (
                       <tr key={log.id || idx} className="hover:bg-[#F8F6F1]/60 font-mono text-[11px]">
                         <td className="py-2 pr-3 text-[#0F172A]/80 whitespace-nowrap">
                           {new Date(log.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}

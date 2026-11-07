@@ -358,11 +358,18 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
                 </div>
 
                 <div className="flex items-center space-x-3 text-xs font-mono">
-                  <span className="text-[#0F172A]/60">
+                  <span className="text-[#0F172A]/70 font-medium">
                     {daysRemaining} {daysRemaining === 1 ? 'day' : 'days'} left in {monthName}
                   </span>
-                  <span className="text-[#DDD7CD]">|</span>
-                  <span className="font-bold text-[#1F6D52] text-sm">{progressPercentage}%</span>
+                  <span className="text-[#D1D5DB]">|</span>
+                  <span
+                    className="font-black text-[#111827] text-xl sm:text-2xl tracking-tight"
+                    style={{
+                      textShadow: '0 0 16px rgba(17, 24, 39, 0.22), 0 0 4px rgba(17, 24, 39, 0.12)',
+                    }}
+                  >
+                    {progressPercentage}%
+                  </span>
                 </div>
               </div>
 

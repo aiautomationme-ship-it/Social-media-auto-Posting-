@@ -273,52 +273,15 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#DDD7CD]">
         <div>
           <div className="flex items-center space-x-2.5">
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#111827] tracking-tight">
               Publishing History
             </h1>
-            <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-[#F4F1EB] text-[#1F6D52] border border-[#DDD7CD]">
-              {activeView === 'outcomes'
-                ? statusFilter !== 'all' || platformFilter !== 'all'
-                  ? `${filteredPosts.length} of ${outcomePosts.length} outcomes`
-                  : `${outcomePosts.length} outcome record${outcomePosts.length === 1 ? '' : 's'}`
-                : `${filteredActivities.length} audit event${filteredActivities.length === 1 ? '' : 's'}`}
-            </span>
           </div>
-          <p className="text-sm text-[#0F172A]/70 mt-1">
-            Actual publishing outcomes, platform responses, failed attempts, and persistent system audit trail.
-          </p>
-        </div>
-
-        {/* View Switcher: Outcomes vs Audit Trail */}
-        <div className="flex items-center bg-[#F4F1EB] p-1 rounded-xl border border-[#DDD7CD] shadow-2xs self-start sm:self-auto">
-          <button
-            onClick={() => setActiveView('outcomes')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer flex items-center space-x-1.5 ${
-              activeView === 'outcomes'
-                ? 'bg-[#F8F6F1] text-[#0F172A] shadow-2xs font-bold'
-                : 'text-[#0F172A]/70 hover:text-[#0F172A]'
-            }`}
-          >
-            <History className="w-3.5 h-3.5 text-[#1F6D52]" />
-            <span>Publishing Outcomes</span>
-            <span className="ml-1 text-[11px] font-mono px-1.5 py-0.2 rounded-md bg-[#DDD7CD]/40">
-              {outcomePosts.length}
-            </span>
-          </button>
-          <button
-            onClick={() => setActiveView('audit_trail')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer flex items-center space-x-1.5 ${
-              activeView === 'audit_trail'
-                ? 'bg-[#F8F6F1] text-[#0F172A] shadow-2xs font-bold'
-                : 'text-[#0F172A]/70 hover:text-[#0F172A]'
-            }`}
-          >
-            <Activity className="w-3.5 h-3.5 text-[#1F6D52]" />
-            <span>Audit Trail</span>
-            <span className="ml-1 text-[11px] font-mono px-1.5 py-0.2 rounded-md bg-[#DDD7CD]/40">
-              {activities.length}
-            </span>
-          </button>
+          <div className="mt-2.5 inline-flex items-center px-4 py-2 rounded-xl bg-white/90 border border-[#D1D5DB] shadow-xs">
+            <p className="text-base sm:text-lg font-bold text-[#111827] tracking-tight">
+              Actual publishing outcomes, platform responses, failed attempts, and persistent system audit trail.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -347,12 +310,12 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
       {/* Honest Loading State */}
       {isLoading && !loadError && (
         <div className="space-y-4">
-          <div className="h-12 bg-[#F4F1EB] border border-[#DDD7CD] rounded-xl animate-pulse" />
+          <div className="h-12 bg-white/80 border border-[#D1D5DB] rounded-xl animate-pulse" />
           <div className="space-y-3">
             {[1, 2].map((i) => (
               <div
                 key={i}
-                className="h-32 bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl p-5 animate-pulse"
+                className="h-32 bg-white/80 border border-[#D1D5DB] rounded-2xl p-5 animate-pulse"
               />
             ))}
           </div>
@@ -362,80 +325,6 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
       {/* VIEW 1: PUBLISHING OUTCOMES */}
       {!isLoading && !loadError && activeView === 'outcomes' && (
         <>
-          {/* Filters Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-[#F4F1EB] border border-[#DDD7CD]">
-            <div className="flex flex-wrap items-center gap-4 text-xs">
-              {/* Status Filters */}
-              <div className="flex items-center gap-1.5">
-                <span className="text-[11px] font-semibold text-[#0F172A]/60 flex items-center gap-1">
-                  <Filter className="w-3 h-3 text-[#1F6D52]" />
-                  Status:
-                </span>
-                {(
-                  [
-                    { id: 'all', label: 'All' },
-                    { id: 'published', label: 'Published' },
-                    { id: 'pending_confirmation', label: 'Pending / Test' },
-                    { id: 'failed', label: 'Failed' },
-                    { id: 'cancelled', label: 'Cancelled' },
-                  ] as const
-                ).map(({ id, label }) => (
-                  <button
-                    key={id}
-                    onClick={() => setStatusFilter(id)}
-                    className={`px-2.5 py-1 rounded-lg capitalize transition cursor-pointer text-xs ${
-                      statusFilter === id
-                        ? 'bg-[#F8F6F1] text-[#0F172A] font-bold shadow-2xs border border-[#DDD7CD]'
-                        : 'text-[#0F172A]/70 hover:text-[#0F172A]'
-                    }`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-
-              {/* Platform Filters */}
-              <div className="flex items-center gap-1.5 pl-0 sm:pl-3 sm:border-l border-[#DDD7CD]">
-                <span className="text-[11px] font-semibold text-[#0F172A]/60">Platform:</span>
-                {(
-                  [
-                    { key: 'all', label: 'All Platforms' },
-                    { key: 'tiktok', label: 'TikTok' },
-                    { key: 'instagram', label: 'Instagram' },
-                    { key: 'facebook', label: 'Facebook' },
-                  ] as const
-                ).map((plat) => (
-                  <button
-                    key={plat.key}
-                    onClick={() => setPlatformFilter(plat.key as any)}
-                    className={`px-2.5 py-1 rounded-lg transition cursor-pointer text-xs ${
-                      platformFilter === plat.key
-                        ? 'bg-[#F8F6F1] text-[#0F172A] font-bold shadow-2xs border border-[#DDD7CD]'
-                        : 'text-[#0F172A]/70 hover:text-[#0F172A]'
-                    }`}
-                  >
-                    {plat.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Filter Summary & Clear Action */}
-            {(statusFilter !== 'all' || platformFilter !== 'all') && (
-              <div className="flex items-center space-x-2">
-                <span className="text-[11px] text-[#0F172A]/60">
-                  Showing {filteredPosts.length} match{filteredPosts.length === 1 ? '' : 'es'}
-                </span>
-                <button
-                  onClick={resetOutcomeFilters}
-                  className="px-2.5 py-1 rounded-lg text-xs font-semibold text-[#1F6D52] hover:bg-[#F8F6F1] border border-[#DDD7CD] transition cursor-pointer"
-                >
-                  Reset Filters
-                </button>
-              </div>
-            )}
-          </div>
-
           {/* Outcomes Records List */}
           <div className="space-y-4">
             {/* Case A: No outcomes exist at all */}

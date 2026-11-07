@@ -356,20 +356,7 @@ export const PublishingCalendar: React.FC<PublishingCalendarProps> = ({
         </div>
       )}
 
-      {/* Empty State Banner (When genuinely 0 scheduled posts exist) */}
-      {allScheduledPosts.length === 0 && (
-        <div className="p-4 bg-[#F4F1EB] border border-dashed border-[#DDD7CD] rounded-2xl text-center space-y-1">
-          <div className="text-xs font-bold text-[#0F172A] flex items-center justify-center gap-1.5">
-            <Clock className="w-4 h-4 text-[#1F6D52]" />
-            <span>Publishing Queue is Clear</span>
-          </div>
-          <p className="text-xs text-[#0F172A]/70 max-w-md mx-auto">
-            There are currently no upcoming scheduled posts in the database. Use the persistent{' '}
-            <strong className="text-[#1F6D52]">Create &amp; Schedule</strong> button in the top header
-            whenever you are ready to schedule content.
-          </p>
-        </div>
-      )}
+
 
       {/* =========================================================================
           VIEW 1: REAL WEEKLY CALENDAR (TIME AXIS + 7-DAY GRID)
