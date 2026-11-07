@@ -965,152 +965,12 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
           <div className="bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl p-5 shadow-xs space-y-4">
             <div className="flex items-center justify-between pb-2 border-b border-[#DDD7CD]">
               <h3 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
-                <span>4. Destination Webhook &amp; Publishing Schedule</span>
+                <span>4. Publishing &amp; Scheduling Controls</span>
               </h3>
               <div className="flex items-center space-x-1.5 text-[11px] font-mono text-[#0F172A]/80 bg-[#F8F6F1] px-2.5 py-1 rounded-lg border border-[#DDD7CD]">
                 <Clock className="w-3.5 h-3.5 text-[#1F6D52]" />
                 <span className="font-semibold">{realTime.formatted}</span>
               </div>
-            </div>
-
-            {/* Destination Webhook Box */}
-            <div className="bg-[#F8F6F1] rounded-xl border border-[#DDD7CD] p-3.5 space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <Zap className="w-4 h-4 text-[#1F6D52]" />
-                  <span className="text-xs font-bold text-[#0F172A]">Destination Webhook:</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span
-                    className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border ${
-                      webhookConfig.isConfigured
-                        ? webhookConfig.isTestUrl
-                          ? 'bg-amber-50 text-amber-900 border-amber-200'
-                          : 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                        : 'bg-rose-50 text-rose-800 border-rose-200'
-                    }`}
-                  >
-                    {webhookConfig.isConfigured
-                      ? webhookConfig.isTestUrl
-                        ? 'n8n Test Webhook'
-                        : 'Production Webhook'
-                      : 'Not Configured'}
-                  </span>
-                  {webhookConfig.isTestUrl && !isEditingWebhook && (
-                    <button
-                      type="button"
-                      onClick={async () => {
-                        const prod = webhookConfig.url.replace('/webhook-test/', '/webhook/');
-                        try {
-                          const res = await api.updateWebhookConfig(prod);
-                          setWebhookConfig(res);
-                          setWebhookInputUrl(prod);
-                          setWebhookTestFeedback({
-                            type: 'success',
-                            text: 'Switched to Production URL! (Remember to toggle workflow Active: ON in n8n)',
-                          });
-                          setTimeout(() => setWebhookTestFeedback(null), 5000);
-                        } catch (err: any) {
-                          setWebhookTestFeedback({ type: 'error', text: err.message });
-                        }
-                      }}
-                      className="text-[10px] bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 px-2 py-0.5 rounded font-bold cursor-pointer"
-                    >
-                      ⚡ Convert to /webhook/
-                    </button>
-                  )}
-                  {!isEditingWebhook && (
-                    <button
-                      type="button"
-                      onClick={() => setIsEditingWebhook(true)}
-                      className="text-[11px] text-[#1F6D52] hover:underline font-semibold cursor-pointer"
-                    >
-                      {webhookConfig.isConfigured ? 'Edit URL' : 'Configure Webhook'}
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {isEditingWebhook ? (
-                <div className="space-y-2 pt-1 border-t border-[#DDD7CD]/70">
-                  <input
-                    type="url"
-                    value={webhookInputUrl}
-                    onChange={(e) => setWebhookInputUrl(e.target.value)}
-                    placeholder="https://your-n8n.example.com/webhook-test/xxxx"
-                    className="w-full bg-[#F4F1EB] border border-[#DDD7CD] rounded-lg px-3 py-1.5 text-xs font-mono text-[#0F172A] focus:outline-none focus:border-[#1F6D52]"
-                  />
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] text-[#0F172A]/60">
-                      Paste your n8n Webhook node Test or Production URL
-                    </span>
-                    <div className="flex items-center space-x-2">
-                      <button
-                        type="button"
-                        onClick={() => setIsEditingWebhook(false)}
-                        className="px-2.5 py-1 text-[11px] font-semibold text-[#0F172A]/70 hover:bg-[#F4F1EB] rounded-lg border border-[#DDD7CD]"
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleSaveInlineWebhook}
-                        disabled={isSavingWebhook}
-                        className="px-3 py-1 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-lg text-[11px] font-bold shadow-2xs disabled:opacity-50"
-                      >
-                        {isSavingWebhook ? 'Saving...' : 'Save Webhook'}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-[#0F172A]/80 truncate max-w-[340px]">
-                    {webhookConfig.url || (
-                      <span className="text-rose-600 font-sans italic text-[11px]">
-                        ⚠️ No webhook configured. Click &quot;Configure Webhook&quot; to add your n8n URL.
-                      </span>
-                    )}
-                  </span>
-                  {webhookConfig.isConfigured && (
-                    <button
-                      type="button"
-                      onClick={handleTestInlineWebhook}
-                      disabled={isTestingWebhook}
-                      className="px-2.5 py-1 bg-[#BD7131] hover:bg-[#A86128] text-white rounded-lg text-[11px] font-semibold flex items-center space-x-1 shrink-0 cursor-pointer shadow-2xs disabled:opacity-50"
-                    >
-                      {isTestingWebhook ? (
-                        <>
-                          <RefreshCw className="w-3 h-3 animate-spin" />
-                          <span>Pinging...</span>
-                        </>
-                      ) : (
-                        <>
-                          <Send className="w-3 h-3" />
-                          <span>Test Ping</span>
-                        </>
-                      )}
-                    </button>
-                  )}
-                </div>
-              )}
-
-              {webhookTestFeedback && (
-                <div
-                  className={`p-2 rounded-lg text-[11px] font-medium flex items-center space-x-1.5 ${
-                    webhookTestFeedback.type === 'success'
-                      ? 'bg-emerald-50 text-emerald-900 border border-emerald-200'
-                      : 'bg-rose-50 text-rose-900 border border-rose-200'
-                  }`}
-                >
-                  {webhookTestFeedback.type === 'success' ? (
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#1F6D52] shrink-0" />
-                  ) : (
-                    <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
-                  )}
-                  <span>{webhookTestFeedback.text}</span>
-                </div>
-              )}
             </div>
 
             {/* Mode Selector */}
@@ -1587,12 +1447,6 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                 <span className="text-[#0F172A]/60">Source Video:</span>
                 <span className="text-[#0F172A] font-mono text-right truncate max-w-[240px]">
                   {selectedVideo?.originalName} ({(selectedVideo ? selectedVideo.fileSize / (1024 * 1024) : 0).toFixed(1)} MB)
-                </span>
-              </div>
-              <div className="flex justify-between items-start">
-                <span className="text-[#0F172A]/60">Destination Webhook:</span>
-                <span className="text-[#0F172A] font-mono text-[11px] text-right truncate max-w-[240px]">
-                  {webhookConfig.url || 'Not configured'}
                 </span>
               </div>
 
