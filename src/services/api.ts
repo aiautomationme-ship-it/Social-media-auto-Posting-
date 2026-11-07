@@ -199,7 +199,7 @@ export const api = {
         } else {
           if (xhr.status === 413) {
             reject(
-              new Error('File exceeds the 32MB upload limit enforced by the serverless gateway. Please select a video under 32MB.')
+              new Error('File upload was rejected by server gateway (HTTP 413 Payload Too Large).')
             );
             return;
           }

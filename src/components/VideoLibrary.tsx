@@ -102,13 +102,6 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
         setUploadError(`File "${file.name}" is not a supported video format (MP4, MOV, WEBM).`);
         return;
       }
-      // Cloud Run / Serverless request payload maximum limit is 32MB per HTTP request
-      if (file.size > 32 * 1024 * 1024) {
-        setUploadError(
-          `"${file.name}" is ${(file.size / (1024 * 1024)).toFixed(1)}MB. Cloud Run proxy limits individual uploads to 32MB. Please upload videos under 32MB.`
-        );
-        return;
-      }
       validFiles.push(file);
     }
 
@@ -201,11 +194,6 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
       setReplaceModalError(`File "${file.name}" is not a supported video format (MP4, MOV, WEBM).`);
       return;
     }
-    if (file.size > 300 * 1024 * 1024) {
-      setReplaceModalError(`File "${file.name}" exceeds the 300MB maximum size limit.`);
-      return;
-    }
-
     setReplaceModalError(null);
     setReplacementFile(file);
     e.target.value = '';

@@ -283,6 +283,24 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
             </p>
           </div>
         </div>
+
+        {/* Platform Filter Dropdown */}
+        <div className="flex items-center space-x-2 self-start sm:self-auto">
+          <label className="text-xs font-semibold text-[#0F172A] flex items-center gap-1.5 whitespace-nowrap">
+            <Filter className="w-3.5 h-3.5 text-[#1F6D52]" />
+            <span>Platform:</span>
+          </label>
+          <select
+            value={platformFilter}
+            onChange={(e) => setPlatformFilter(e.target.value as any)}
+            className="bg-white border border-[#D1D5DB] rounded-xl px-3 py-2 text-xs font-semibold text-[#111827] cursor-pointer shadow-2xs focus:outline-none focus:border-[#1F6D52]"
+          >
+            <option value="all">All Platforms</option>
+            <option value="instagram">Instagram</option>
+            <option value="facebook">Facebook</option>
+            <option value="tiktok">TikTok</option>
+          </select>
+        </div>
       </div>
 
       {/* Honest Error State */}
