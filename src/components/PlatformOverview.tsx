@@ -49,10 +49,10 @@ export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ overview }) 
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h2 className="text-base sm:text-lg font-bold text-[#0F172A] tracking-tight">
+              <h2 className="text-base font-bold text-[#0F172A] tracking-tight">
                 Publishing Platforms Overview
               </h2>
-              <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+              <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                 Backend Managed
               </span>
             </div>
@@ -82,7 +82,7 @@ export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ overview }) 
               <div>
                 <div className="flex items-center justify-between mb-2.5">
                   <span className="font-bold text-sm text-[#0F172A]">{meta.name}</span>
-                  <span className="inline-flex items-center space-x-1 text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  <span className="inline-flex items-center space-x-1 text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                     <CheckCircle2 className="w-3 h-3 text-[#1F6D52]" />
                     <span>Ready</span>
                   </span>
@@ -93,14 +93,14 @@ export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ overview }) 
                 </p>
 
                 <div className="space-y-3">
-                  <div className="text-[11px] font-mono text-[#0F172A]/80 font-semibold bg-[#F4F1EB] px-2.5 py-1.5 rounded-lg border border-[#DDD7CD] truncate">
+                  <div className="text-xs font-mono text-[#0F172A]/80 font-semibold bg-[#F4F1EB] px-2.5 py-1.5 rounded-lg border border-[#DDD7CD] truncate">
                     {info?.accountName || 'Backend Workflow Destination'}
                   </div>
 
                   {/* Summary Metric Wells */}
                   <div className="grid grid-cols-2 gap-2 pt-1">
                     <div className="bg-[#F4F1EB] border border-[#DDD7CD] p-2.5 rounded-xl shadow-2xs text-left">
-                      <div className="flex items-center space-x-1 text-[11px] text-[#0F172A]/70 mb-0.5 font-medium">
+                      <div className="flex items-center space-x-1 text-xs text-[#0F172A]/70 mb-0.5 font-medium">
                         <Send className="w-3 h-3 text-[#1F6D52]" />
                         <span>Published</span>
                       </div>
@@ -110,7 +110,7 @@ export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ overview }) 
                     </div>
 
                     <div className="bg-[#F4F1EB] border border-[#DDD7CD] p-2.5 rounded-xl shadow-2xs text-left">
-                      <div className="flex items-center space-x-1 text-[11px] text-[#0F172A]/70 mb-0.5 font-medium">
+                      <div className="flex items-center space-x-1 text-xs text-[#0F172A]/70 mb-0.5 font-medium">
                         <Calendar className="w-3 h-3 text-[#BD7131]" />
                         <span>Scheduled</span>
                       </div>

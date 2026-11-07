@@ -56,8 +56,8 @@ export const UpcomingContent: React.FC<UpcomingContentProps> = ({
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h2 className="text-lg font-bold text-slate-900 tracking-tight">Upcoming Queue</h2>
-              <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#F9FAFB] border border-[#E5E7EB] text-slate-700">
+              <h2 className="text-base font-bold text-slate-900 tracking-tight">Upcoming Queue</h2>
+              <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-[#F9FAFB] border border-[#E5E7EB] text-slate-700">
                 {upcomingPosts.length} queued
               </span>
             </div>
@@ -137,7 +137,7 @@ export const UpcomingContent: React.FC<UpcomingContentProps> = ({
                   }`}
                 >
                   <div>
-                    <span className="text-[10px] uppercase font-semibold text-slate-600 block">
+                    <span className="text-xs uppercase font-semibold text-slate-600 block">
                       {dayStr}
                     </span>
                     <span
@@ -151,11 +151,11 @@ export const UpcomingContent: React.FC<UpcomingContentProps> = ({
 
                   <div className="pt-1">
                     {dayPosts.length > 0 ? (
-                      <span className="inline-block text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white text-[#1F6D52] border border-emerald-200 shadow-2xs">
+                      <span className="inline-block text-xs font-mono font-bold px-1.5 py-0.5 rounded bg-white text-[#1F6D52] border border-emerald-200 shadow-2xs">
                         {dayPosts.length} post{dayPosts.length > 1 ? 's' : ''}
                       </span>
                     ) : (
-                      <span className="text-[10px] text-slate-600">—</span>
+                      <span className="text-xs text-slate-600">—</span>
                     )}
                   </div>
                 </div>
@@ -180,7 +180,7 @@ export const UpcomingContent: React.FC<UpcomingContentProps> = ({
             {onCreatePost && (
               <button
                 onClick={onCreatePost}
-                className="px-4 py-2.5 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-bold transition shadow-xs inline-flex items-center space-x-2 cursor-pointer"
+                className="px-4 py-2.5 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-semibold transition shadow-xs inline-flex items-center space-x-2 cursor-pointer"
               >
                 <PlusCircle className="w-4 h-4" />
                 <span>Schedule Next Post</span>
@@ -249,7 +249,7 @@ export const UpcomingContent: React.FC<UpcomingContentProps> = ({
                         {activePlatforms.map((plat) => (
                           <span
                             key={plat}
-                            className="text-[10px] uppercase font-mono font-semibold px-2 py-0.5 rounded bg-white text-slate-700 border border-[#E5E7EB]"
+                            className="text-xs uppercase font-mono font-semibold px-2 py-0.5 rounded bg-white text-slate-700 border border-[#E5E7EB]"
                           >
                             {plat}
                           </span>
@@ -264,7 +264,7 @@ export const UpcomingContent: React.FC<UpcomingContentProps> = ({
                         <Clock className="w-3.5 h-3.5 text-[#1F6D52]" />
                         <span>{formattedTime}</span>
                       </div>
-                      <span className="text-[11px] text-slate-500 font-medium">Scheduled trigger</span>
+                      <span className="text-xs text-slate-500 font-medium">Scheduled trigger</span>
                     </div>
 
                     {onCancelPost && (

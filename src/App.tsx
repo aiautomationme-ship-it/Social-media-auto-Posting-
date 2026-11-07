@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Navbar } from './components/Navbar.tsx';
 import { MonthlyTargetCard } from './components/MonthlyTargetCard.tsx';
+import { PublishingTrendChart } from './components/PublishingTrendChart.tsx';
 import { VideoLibrary } from './components/VideoLibrary.tsx';
 import { PublishingCalendar } from './components/PublishingCalendar.tsx';
 import { PublishingHistory } from './components/PublishingHistory.tsx';
@@ -21,7 +22,6 @@ import {
   RefreshCw,
   CheckCircle2,
   AlertCircle,
-  ShieldCheck,
   PlusCircle,
 } from 'lucide-react';
 
@@ -262,7 +262,7 @@ export default function App() {
             {/* Dashboard Overview Heading - Clean, with single refresh action (no duplicate create button) */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#DDD7CD]">
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">
+                <h1 className="text-2xl font-bold text-[#0F172A] tracking-tight">
                   Social Media Publishing Dashboard
                 </h1>
                 <p className="text-sm text-[#0F172A]/70 mt-1">
@@ -274,7 +274,7 @@ export default function App() {
               <div className="flex items-center space-x-2.5 self-start sm:self-auto">
                 <button
                   onClick={() => setCurrentTab('create')}
-                  className="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-xl bg-[#1F6D52] hover:bg-[#185741] text-white text-xs sm:text-sm font-bold shadow-xs transition cursor-pointer"
+                  className="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-xl bg-[#1F6D52] hover:bg-[#185741] text-white text-xs sm:text-sm font-semibold shadow-xs transition cursor-pointer"
                   title="Create new post & schedule publication"
                 >
                   <PlusCircle className="w-4 h-4" />
@@ -309,6 +309,12 @@ export default function App() {
               onSaveTarget={handleSaveTarget}
               onDeleteTarget={handleDeleteTarget}
               isLoading={isLoading}
+            />
+
+            {/* 30-Day Publishing Velocity & Trend Chart */}
+            <PublishingTrendChart
+              posts={posts}
+              activities={activities}
             />
           </div>
         )}
@@ -380,21 +386,6 @@ export default function App() {
           </div>
         )}
       </main>
-
-      {/* Account Footer Band */}
-      <footer className="border-t border-[#DDD7CD] bg-[#F4F1EB] text-[#0F172A]/70 py-4 mt-12 text-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center space-x-2">
-            <span className="font-bold text-[#0F172A] tracking-tight">SocialFlow</span>
-            <span className="text-[#DDD7CD]">—</span>
-            <span>Multi-platform Social Publishing Engine</span>
-          </div>
-          <div className="flex items-center space-x-2 font-mono text-[11px] bg-[#F8F6F1] px-3 py-1 rounded-lg text-[#0F172A] border border-[#DDD7CD]">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#1F6D52]" />
-            <span>Persistent Backend Daemon Active</span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

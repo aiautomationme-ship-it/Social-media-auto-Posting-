@@ -61,8 +61,8 @@ export const RecentActivity: React.FC<RecentActivityProps> = ({ activities }) =>
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h2 className="text-lg font-bold text-slate-900 tracking-tight">Audit Trail</h2>
-              <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#F9FAFB] border border-[#E5E7EB] text-slate-700">
+              <h2 className="text-base font-bold text-slate-900 tracking-tight">Audit Trail</h2>
+              <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-[#F9FAFB] border border-[#E5E7EB] text-slate-700">
                 {activities.length} logs
               </span>
             </div>
@@ -138,7 +138,7 @@ export const RecentActivity: React.FC<RecentActivityProps> = ({ activities }) =>
                             <p className="text-xs font-bold text-slate-900 truncate">
                               {act.title}
                             </p>
-                            <span className="text-[11px] text-slate-600 whitespace-nowrap ml-2 font-mono">
+                            <span className="text-xs text-slate-600 whitespace-nowrap ml-2 font-mono">
                               {formattedTime}
                             </span>
                           </div>

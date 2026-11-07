@@ -149,15 +149,15 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-base sm:text-lg font-bold text-[#0F172A] tracking-tight">
+              <h2 className="text-base font-bold text-[#0F172A] tracking-tight">
                 Monthly Publishing Target
               </h2>
               {target ? (
-                <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                   {remainingPostsNeeded === 0 ? 'Goal Achieved' : 'Active Goal'}
                 </span>
               ) : (
-                <span className="text-[11px] font-mono font-medium px-2 py-0.5 rounded-full bg-[#F8F6F1] text-[#0F172A]/60 border border-[#DDD7CD]">
+                <span className="text-xs font-mono font-medium px-2 py-0.5 rounded-full bg-[#F8F6F1] text-[#0F172A]/60 border border-[#DDD7CD]">
                   Unset
                 </span>
               )}
@@ -173,7 +173,7 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
           {!isCurrentMonth && (
             <button
               onClick={() => onSelectDate(now.getMonth() + 1, now.getFullYear())}
-              className="text-[11px] font-bold text-[#1F6D52] bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1.5 rounded-xl transition cursor-pointer"
+              className="text-xs font-semibold text-[#1F6D52] bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1.5 rounded-xl transition cursor-pointer"
             >
               Jump to Current Month ({MONTH_NAMES[now.getMonth()]} {now.getFullYear()})
             </button>
@@ -192,7 +192,7 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
             <div className="px-3 py-1 flex items-center space-x-1.5 font-semibold text-xs sm:text-sm text-[#0F172A]">
               <Calendar className="w-3.5 h-3.5 text-[#1F6D52]" />
               <span>{monthName}</span>
-              <span className="text-[#0F172A]/60 font-normal">{selectedYear}</span>
+              <span className="text-[#0F172A]/60 font-medium">{selectedYear}</span>
             </div>
 
             <button
@@ -217,10 +217,10 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
           >
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="block text-xs font-bold text-[#0F172A]">
+                <label className="block text-xs font-semibold text-[#0F172A]">
                   Target publishing goal for {monthName} {selectedYear}
                 </label>
-                <span className="text-[11px] text-[#0F172A]/60 font-mono">Positive integer</span>
+                <span className="text-xs text-[#0F172A]/60 font-mono">Positive integer</span>
               </div>
 
               <div className="relative">
@@ -234,14 +234,14 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
                   className="w-full bg-[#F4F1EB] border border-[#DDD7CD] rounded-xl px-4 py-2.5 text-[#0F172A] font-mono text-base font-semibold focus:outline-none focus:border-[#1F6D52] focus:ring-1 focus:ring-[#1F6D52] shadow-2xs"
                   autoFocus
                 />
-                <span className="absolute right-4 top-3 text-xs font-medium text-[#0F172A]/50">
+                <span className="absolute right-4 top-3 text-xs font-medium text-[#0F172A]/60">
                   posts
                 </span>
               </div>
 
               {/* Quick Preset Chips */}
               <div className="flex items-center space-x-2 mt-2.5">
-                <span className="text-[11px] text-[#0F172A]/60">Presets:</span>
+                <span className="text-xs text-[#0F172A]/60">Presets:</span>
                 {[12, 20, 30, 45].map((preset) => (
                   <button
                     key={preset}
@@ -266,7 +266,7 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
               <button
                 type="submit"
                 disabled={actionLoading}
-                className="px-5 py-2.5 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-bold shadow-xs transition disabled:opacity-50 cursor-pointer"
+                className="px-5 py-2.5 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-semibold shadow-xs transition disabled:opacity-50 cursor-pointer"
               >
                 {actionLoading ? 'Saving...' : target ? 'Save Target' : 'Create Target'}
               </button>
@@ -293,10 +293,10 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
                     <Target className="w-3.5 h-3.5" />
                   </div>
                 </div>
-                <div className="text-3xl font-extrabold text-[#0F172A] font-mono tracking-tight">
+                <div className="text-3xl font-bold text-[#0F172A] font-mono tracking-tight">
                   {targetCount}
                 </div>
-                <p className="text-[11px] text-[#0F172A]/60 mt-1 font-medium">Confirmed posts goal</p>
+                <p className="text-xs text-[#0F172A]/60 mt-1 font-medium">Confirmed posts goal</p>
               </div>
 
               {/* Confirmed Published */}
@@ -307,10 +307,10 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
                     <CheckCircle2 className="w-3.5 h-3.5" />
                   </div>
                 </div>
-                <div className="text-3xl font-extrabold text-[#1F6D52] font-mono tracking-tight">
+                <div className="text-3xl font-bold text-[#1F6D52] font-mono tracking-tight">
                   {confirmedPublishedCount}
                 </div>
-                <p className="text-[11px] text-[#0F172A]/60 mt-1 font-medium">
+                <p className="text-xs text-[#0F172A]/60 mt-1 font-medium">
                   {confirmedPublishedCount === 0
                     ? 'No posts published yet'
                     : `${progressPercentage}% of monthly target`}
@@ -325,10 +325,10 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
                     <Clock className="w-3.5 h-3.5" />
                   </div>
                 </div>
-                <div className="text-3xl font-extrabold text-[#0F172A] font-mono tracking-tight">
+                <div className="text-3xl font-bold text-[#0F172A] font-mono tracking-tight">
                   {remainingPostsNeeded}
                 </div>
-                <p className="text-[11px] text-[#0F172A]/60 mt-1 font-medium">
+                <p className="text-xs text-[#0F172A]/60 mt-1 font-medium">
                   {remainingPostsNeeded === 0
                     ? 'Target accomplished!'
                     : `Needs ~${postsPerWeekNeeded} posts/week`}
@@ -343,15 +343,15 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
                   <TrendingUp className="w-4 h-4 text-[#1F6D52]" />
                   <span className="text-xs font-bold text-[#0F172A]">Publishing Trajectory</span>
                   {remainingPostsNeeded === 0 ? (
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
                       Completed 100%
                     </span>
                   ) : isAheadOrOnTrack ? (
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                       On Track
                     </span>
                   ) : (
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
                       Pacing behind
                     </span>
                   )}
@@ -363,7 +363,7 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
                   </span>
                   <span className="text-[#D1D5DB]">|</span>
                   <span
-                    className="font-black text-[#111827] text-xl sm:text-2xl tracking-tight"
+                    className="font-bold text-[#111827] text-xl sm:text-2xl tracking-tight"
                     style={{
                       textShadow: '0 0 16px rgba(17, 24, 39, 0.22), 0 0 4px rgba(17, 24, 39, 0.12)',
                     }}
@@ -382,7 +382,7 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
                   />
                 </div>
                 {/* Milestone Indicators */}
-                <div className="flex justify-between text-[10px] text-[#0F172A]/60 font-mono font-medium px-1">
+                <div className="flex justify-between text-xs text-[#0F172A]/60 font-mono font-medium px-1">
                   <span>0%</span>
                   <span>25%</span>
                   <span>50%</span>
@@ -394,8 +394,8 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
 
             {/* Target Actions & Metadata Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-[#DDD7CD]">
-              <div className="flex items-center space-x-2 text-[11px] text-[#0F172A]/60">
-                <Compass className="w-3.5 h-3.5 text-[#0F172A]/40" />
+              <div className="flex items-center space-x-2 text-xs text-[#0F172A]/60">
+                <Compass className="w-3.5 h-3.5 text-[#0F172A]/60" />
                 <span className="font-mono">
                   Target created {new Date(target.createdAt).toLocaleDateString()}
                   {target.updatedAt !== target.createdAt &&
@@ -436,7 +436,7 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
             </p>
             <button
               onClick={handleStartCreateOrEdit}
-              className="inline-flex items-center space-x-2 px-5 py-2.5 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-bold shadow-xs transition cursor-pointer"
+              className="inline-flex items-center space-x-2 px-5 py-2.5 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-semibold shadow-xs transition cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               <span>Set Target for {monthName}</span>
@@ -465,7 +465,7 @@ export const MonthlyTargetCard: React.FC<MonthlyTargetCardProps> = ({
               <button
                 onClick={handleDelete}
                 disabled={actionLoading}
-                className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-rose-700 hover:bg-rose-800 transition shadow-xs cursor-pointer"
+                className="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-rose-700 hover:bg-rose-800 transition shadow-xs cursor-pointer"
               >
                 {actionLoading ? 'Deleting...' : 'Confirm Delete'}
               </button>

@@ -306,7 +306,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#DDD7CD]">
         <div>
           <div className="flex items-center space-x-2.5">
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">
+            <h1 className="text-2xl font-bold text-[#0F172A] tracking-tight">
               Video Library
             </h1>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#F4F1EB] text-[#1F6D52] font-mono font-semibold border border-[#DDD7CD]">
@@ -361,11 +361,11 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                       ? `Uploading ${uploadProgress.totalFiles} Videos in Bulk`
                       : `Uploading: ${uploadProgress.currentFileName}`}
                   </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#1F6D52]/10 text-[#1F6D52] font-semibold border border-[#1F6D52]/20 font-mono">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#1F6D52]/10 text-[#1F6D52] font-semibold border border-[#1F6D52]/20 font-mono">
                     High-Speed Stream
                   </span>
                 </div>
-                <p className="text-[11px] text-[#0F172A]/70 font-mono mt-0.5">
+                <p className="text-xs text-[#0F172A]/70 font-mono mt-0.5">
                   {uploadProgress.status === 'saving'
                     ? 'Persisting files to server storage...'
                     : uploadProgress.status === 'done'
@@ -428,7 +428,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
             <FolderOpen className="w-7 h-7" />
           </div>
 
-          <h2 className="text-base sm:text-lg font-bold text-[#0F172A]">
+          <h2 className="text-base font-bold text-[#0F172A]">
             Your Video Library is Empty
           </h2>
 
@@ -441,14 +441,14 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="inline-flex items-center space-x-2 px-5 py-2.5 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs sm:text-sm font-bold shadow-xs transition cursor-pointer"
+            className="inline-flex items-center space-x-2 px-5 py-2.5 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition cursor-pointer"
           >
             <UploadCloud className="w-4 h-4" />
             <span>Browse Files</span>
           </button>
 
           {/* Supported specs & quality note */}
-          <div className="mt-8 pt-6 border-t border-[#DDD7CD]/70 max-w-lg mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 text-[11px] text-[#0F172A]/60 font-mono">
+          <div className="mt-8 pt-6 border-t border-[#DDD7CD]/70 max-w-lg mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-[#0F172A]/60 font-mono">
             <span>Formats: MP4, MOV, WebM</span>
             <span className="hidden sm:inline text-[#DDD7CD]">•</span>
             <span>Max Size: 300MB per file</span>
@@ -466,7 +466,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 p-3.5 bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl shadow-2xs">
             {/* Search Input */}
             <div className="relative flex-1 min-w-[200px]">
-              <Search className="w-4 h-4 absolute left-3 top-2.5 text-[#0F172A]/40" />
+              <Search className="w-4 h-4 absolute left-3 top-2.5 text-[#0F172A]/60" />
               <input
                 type="text"
                 value={searchQuery}
@@ -477,7 +477,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-2.5 text-[#0F172A]/40 hover:text-[#0F172A] p-0.5"
+                  className="absolute right-2.5 top-2.5 text-[#0F172A]/60 hover:text-[#0F172A] p-0.5"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -492,7 +492,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                   <button
                     key={fmt}
                     onClick={() => setFormatFilter(fmt)}
-                    className={`px-2.5 py-1 rounded-lg uppercase text-[11px] font-semibold transition cursor-pointer ${
+                    className={`px-2.5 py-1 rounded-lg uppercase text-xs font-semibold transition cursor-pointer ${
                       formatFilter === fmt
                         ? 'bg-[#1F6D52] text-white shadow-2xs'
                         : 'text-[#0F172A]/70 hover:text-[#0F172A]'
@@ -521,7 +521,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
           {/* Videos Grid */}
           {filteredVideos.length === 0 ? (
             <div className="bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl p-10 text-center shadow-xs">
-              <Search className="w-6 h-6 mx-auto mb-2 text-[#0F172A]/40" />
+              <Search className="w-6 h-6 mx-auto mb-2 text-[#0F172A]/60" />
               <h3 className="text-sm font-bold text-[#0F172A]">No Matching Videos</h3>
               <p className="text-xs text-[#0F172A]/70 max-w-sm mx-auto mt-1 mb-3">
                 No stored videos match your current search query or format filter.
@@ -581,12 +581,12 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                       </div>
 
                       {/* Format Badge */}
-                      <span className="absolute bottom-2 right-2 text-[10px] font-mono font-bold bg-black/80 text-white px-2 py-0.5 rounded shadow-2xs">
+                      <span className="absolute bottom-2 right-2 text-xs font-mono font-bold bg-black/80 text-white px-2 py-0.5 rounded shadow-2xs">
                         {ext}
                       </span>
 
                       {/* Processing / Stored Status Badge */}
-                      <span className="absolute top-2 left-2 text-[10px] font-mono font-semibold bg-[#F8F6F1]/95 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded shadow-2xs flex items-center gap-1">
+                      <span className="absolute top-2 left-2 text-xs font-mono font-semibold bg-[#F8F6F1]/95 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded shadow-2xs flex items-center gap-1">
                         <Check className="w-3 h-3 text-[#1F6D52]" />
                         <span>Ready</span>
                       </span>
@@ -604,7 +604,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                           </h3>
                           <button
                             onClick={() => handleStartEdit(vid)}
-                            className="text-[#0F172A]/50 hover:text-[#1F6D52] p-0.5 rounded transition cursor-pointer"
+                            className="text-[#0F172A]/60 hover:text-[#1F6D52] p-0.5 rounded transition cursor-pointer"
                             title="Edit Title / Rename"
                           >
                             <Pencil className="w-3.5 h-3.5" />
@@ -612,14 +612,14 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                         </div>
 
                         {/* Metadata Details */}
-                        <div className="flex items-center space-x-3 text-[11px] text-[#0F172A]/60 mt-1.5 font-mono">
+                        <div className="flex items-center space-x-3 text-xs text-[#0F172A]/60 mt-1.5 font-mono">
                           <span className="flex items-center gap-1">
-                            <HardDrive className="w-3 h-3 text-[#0F172A]/40" />
+                            <HardDrive className="w-3 h-3 text-[#0F172A]/60" />
                             {sizeMb} MB
                           </span>
                           <span>•</span>
                           <span className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3 text-[#0F172A]/40" />
+                            <Calendar className="w-3 h-3 text-[#0F172A]/60" />
                             {dateStr}
                           </span>
                         </div>
@@ -662,7 +662,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                         {/* Delete Action */}
                         <button
                           onClick={() => setVideoToDelete(vid)}
-                          className="p-1.5 text-[#0F172A]/50 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition cursor-pointer"
+                          className="p-1.5 text-[#0F172A]/60 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition cursor-pointer"
                           title="Delete Video from Server"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -687,7 +687,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
               </h3>
               <button
                 onClick={() => setSelectedPreviewVideo(null)}
-                className="text-[#0F172A]/50 hover:text-[#0F172A] p-1 rounded-lg hover:bg-[#F4F1EB] cursor-pointer"
+                className="text-[#0F172A]/60 hover:text-[#0F172A] p-1 rounded-lg hover:bg-[#F4F1EB] cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -731,7 +731,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
               <h3 className="text-base font-bold text-[#0F172A]">Edit Video Title</h3>
               <button
                 onClick={() => setVideoToEdit(null)}
-                className="text-[#0F172A]/50 hover:text-[#0F172A] cursor-pointer"
+                className="text-[#0F172A]/60 hover:text-[#0F172A] cursor-pointer"
               >
                 ✕
               </button>
@@ -739,7 +739,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
 
             <form onSubmit={confirmEdit} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-[#0F172A] mb-1.5">
+                <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">
                   Display Filename / Title
                 </label>
                 <input
@@ -764,7 +764,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                 <button
                   type="submit"
                   disabled={actionLoading}
-                  className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#1F6D52] hover:bg-[#185741] transition shadow-xs cursor-pointer"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-[#1F6D52] hover:bg-[#185741] transition shadow-xs cursor-pointer"
                 >
                   {actionLoading ? 'Saving...' : 'Save Title'}
                 </button>
@@ -789,7 +789,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                   setDeleteModalError(null);
                 }}
                 disabled={actionLoading}
-                className="text-[#0F172A]/50 hover:text-[#0F172A] p-1 rounded-lg hover:bg-[#F4F1EB] cursor-pointer"
+                className="text-[#0F172A]/60 hover:text-[#0F172A] p-1 rounded-lg hover:bg-[#F4F1EB] cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -822,7 +822,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
               <button
                 onClick={confirmDelete}
                 disabled={actionLoading}
-                className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-rose-700 hover:bg-rose-800 transition shadow-xs flex items-center space-x-1.5 cursor-pointer disabled:opacity-50"
+                className="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-rose-700 hover:bg-rose-800 transition shadow-xs flex items-center space-x-1.5 cursor-pointer disabled:opacity-50"
               >
                 {actionLoading ? (
                   <>
@@ -852,7 +852,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#0F172A]">Change / Replace Video Asset</h3>
-                  <p className="text-[11px] text-[#0F172A]/60">Replace the source file while keeping post connections intact</p>
+                  <p className="text-xs text-[#0F172A]/60">Replace the source file while keeping post connections intact</p>
                 </div>
               </div>
               <button
@@ -862,7 +862,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                   setReplaceModalError(null);
                 }}
                 disabled={actionLoading}
-                className="text-[#0F172A]/50 hover:text-[#0F172A] p-1 rounded-lg hover:bg-[#F4F1EB] cursor-pointer"
+                className="text-[#0F172A]/60 hover:text-[#0F172A] p-1 rounded-lg hover:bg-[#F4F1EB] cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -870,11 +870,11 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
 
             {/* Current Video Info */}
             <div className="bg-[#F4F1EB] border border-[#DDD7CD] rounded-xl p-3 text-xs space-y-1">
-              <span className="text-[#0F172A]/60 font-semibold block uppercase tracking-wider text-[10px]">
+              <span className="text-[#0F172A]/60 font-semibold block uppercase tracking-wider text-xs">
                 Current Video Asset
               </span>
               <p className="font-bold text-[#0F172A] truncate">{videoToReplace.originalName}</p>
-              <p className="text-[11px] text-[#0F172A]/70 font-mono">
+              <p className="text-xs text-[#0F172A]/70 font-mono">
                 Size: {(videoToReplace.fileSize / (1024 * 1024)).toFixed(1)} MB • Format: {videoToReplace.mimeType}
               </p>
             </div>
@@ -889,7 +889,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
 
             {/* Replacement Selection Zone */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold text-[#0F172A]">
+              <label className="block text-xs font-semibold text-[#0F172A]">
                 Select New Replacement Video
               </label>
 
@@ -900,7 +900,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                 >
                   <UploadCloud className="w-8 h-8 text-[#1F6D52] mx-auto mb-2" />
                   <p className="text-xs font-bold text-[#0F172A]">Click to choose replacement video</p>
-                  <p className="text-[11px] text-[#0F172A]/60 mt-0.5">
+                  <p className="text-xs text-[#0F172A]/60 mt-0.5">
                     Supports MP4, MOV, WEBM (up to 300MB)
                   </p>
                 </div>
@@ -912,7 +912,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                       <p className="text-xs font-bold text-[#0F172A] truncate">
                         {replacementFile.name}
                       </p>
-                      <p className="text-[11px] text-[#0F172A]/70 font-mono">
+                      <p className="text-xs text-[#0F172A]/70 font-mono">
                         {(replacementFile.size / (1024 * 1024)).toFixed(1)} MB • Ready to replace
                       </p>
                     </div>
@@ -955,7 +955,7 @@ export const VideoLibrary: React.FC<VideoLibraryProps> = ({
                 type="button"
                 onClick={confirmReplaceVideo}
                 disabled={!replacementFile || actionLoading}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition shadow-xs flex items-center space-x-1.5 cursor-pointer ${
+                className={`px-4 py-2 rounded-xl text-xs font-semibold transition shadow-xs flex items-center space-x-1.5 cursor-pointer ${
                   !replacementFile || actionLoading
                     ? 'bg-[#1F6D52]/40 text-white cursor-not-allowed'
                     : 'bg-[#1F6D52] hover:bg-[#185741] text-white'

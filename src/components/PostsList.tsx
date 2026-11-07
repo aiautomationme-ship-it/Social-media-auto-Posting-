@@ -44,42 +44,42 @@ export const PostsList: React.FC<PostsListProps> = ({
     switch (status) {
       case 'published':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
             <CheckCircle2 className="w-3 h-3" />
             <span>Published</span>
           </span>
         );
       case 'publishing':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 animate-pulse">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 animate-pulse">
             <Send className="w-3 h-3" />
             <span>Publishing...</span>
           </span>
         );
       case 'scheduled':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">
             <Clock className="w-3 h-3" />
             <span>Scheduled</span>
           </span>
         );
       case 'failed':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">
             <AlertCircle className="w-3 h-3" />
             <span>Failed</span>
           </span>
         );
       case 'cancelled':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">
             <XCircle className="w-3 h-3" />
             <span>Cancelled</span>
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">
             <span>Draft</span>
           </span>
         );
@@ -189,7 +189,7 @@ export const PostsList: React.FC<PostsListProps> = ({
           <div className="w-12 h-12 rounded-full bg-[#F9FAFB] flex items-center justify-center mx-auto text-slate-400 mb-3 border border-[#E5E7EB]">
             <CalendarClock className="w-6 h-6" />
           </div>
-          <h3 className="text-base font-semibold text-slate-900">No Posts Matching Criteria</h3>
+          <h3 className="text-base font-bold text-slate-900">No Posts Matching Criteria</h3>
           <p className="text-xs text-slate-600 max-w-sm mx-auto mt-1 mb-5">
             {posts.length === 0
               ? 'No posts created yet. Create a post and schedule it across your social accounts.'
@@ -239,7 +239,7 @@ export const PostsList: React.FC<PostsListProps> = ({
 
                     <div className="min-w-0">
                       <div className="flex items-center space-x-2">
-                        <h3 className="text-base font-semibold text-slate-900 truncate max-w-md">
+                        <h3 className="text-base font-bold text-slate-900 truncate max-w-md">
                           {post.title}
                         </h3>
                         {getStatusBadge(post.status)}
@@ -314,14 +314,14 @@ export const PostsList: React.FC<PostsListProps> = ({
 
                           {/* Error Banner if failed */}
                           {config.status === 'failed' && config.errorMessage && (
-                            <div className="mt-2 p-2 bg-rose-50 border border-rose-200 rounded text-[11px] text-rose-700 font-medium">
+                            <div className="mt-2 p-2 bg-rose-50 border border-rose-200 rounded text-xs text-rose-700 font-medium">
                               Error: {config.errorMessage}
                             </div>
                           )}
 
                           {/* Scheduled Time */}
                           {config.status === 'scheduled' && platScheduledAt && (
-                            <div className="mt-2 text-[11px] text-amber-700 flex items-center space-x-1 font-medium">
+                            <div className="mt-2 text-xs text-amber-700 flex items-center space-x-1 font-medium">
                               <Clock className="w-3 h-3 shrink-0 text-amber-600" />
                               <span>Due {new Date(platScheduledAt).toLocaleString()}</span>
                             </div>
@@ -329,7 +329,7 @@ export const PostsList: React.FC<PostsListProps> = ({
 
                           {/* Published Info */}
                           {config.status === 'published' && config.publishedAt && (
-                            <div className="mt-2 text-[11px] text-emerald-700 flex items-center space-x-1 font-medium">
+                            <div className="mt-2 text-xs text-emerald-700 flex items-center space-x-1 font-medium">
                               <CheckCircle2 className="w-3 h-3 shrink-0 text-emerald-600" />
                               <span>Published {new Date(config.publishedAt).toLocaleString()}</span>
                             </div>
@@ -358,7 +358,7 @@ export const PostsList: React.FC<PostsListProps> = ({
                               <span>Safe Retry</span>
                             </button>
                           ) : (
-                            <span className="text-[11px] text-slate-500 font-mono">
+                            <span className="text-xs text-slate-500 font-mono">
                               Attempts: {config.attemptCount}
                             </span>
                           )}

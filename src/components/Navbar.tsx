@@ -79,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => onSelectTab(item.id)}
-                  className={`flex items-center justify-center space-x-2 py-2.5 px-3 rounded-xl text-sm lg:text-[15px] font-bold transition cursor-pointer shadow-2xs whitespace-nowrap ${
+                  className={`flex items-center justify-center space-x-2 py-2.5 px-3 rounded-xl text-sm font-semibold transition cursor-pointer shadow-2xs whitespace-nowrap ${
                     isActive
                       ? 'bg-[#111827] text-white shadow-sm ring-1 ring-[#1F2937]'
                       : 'bg-[#F3F4F6]/90 text-[#111827] hover:bg-[#E5E7EB] border border-[#D1D5DB]'
@@ -117,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 key={item.id}
                 onClick={() => onSelectTab(item.id)}
-                className={`flex flex-col items-center px-2.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap cursor-pointer transition ${
+                className={`flex flex-col items-center px-2.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap cursor-pointer transition ${
                   isActive
                     ? 'bg-[#111827] text-white shadow-2xs'
                     : 'text-[#111827] hover:bg-[#F3F4F6]'

@@ -320,7 +320,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#DDD7CD]">
         <div>
           <div className="flex items-center space-x-2.5">
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">
+            <h1 className="text-2xl font-bold text-[#0F172A] tracking-tight">
               Settings &amp; Webhook Integration
             </h1>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#1F6D52]/10 text-[#1F6D52] font-semibold border border-[#1F6D52]/20 font-mono">
@@ -360,7 +360,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
               {/* Status Pill */}
               <span
-                className={`text-[11px] font-mono font-bold px-2.5 py-1 rounded-full border flex items-center space-x-1.5 ${
+                className={`text-xs font-mono font-bold px-2.5 py-1 rounded-full border flex items-center space-x-1.5 ${
                   isConfigured
                     ? isTestUrl
                       ? 'bg-amber-50 text-amber-900 border-amber-200'
@@ -389,7 +389,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold">n8n Test Webhook Active (/webhook-test/)</span>
-                    <p className="text-[11px] text-amber-800 mt-0.5">
+                    <p className="text-xs text-amber-800 mt-0.5">
                       In n8n, <code>/webhook-test/</code> only listens for ONE single request after you click <em>&quot;Execute workflow&quot;</em>. For continuous scheduled &amp; automated publishing, switch to the <strong>Production URL</strong> and toggle your workflow <strong>Active: ON</strong> in n8n.
                     </p>
                   </div>
@@ -397,7 +397,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 <button
                   type="button"
                   onClick={() => handleSwitchToProduction()}
-                  className="px-3 py-1.5 bg-amber-800 hover:bg-amber-900 text-white rounded-lg text-xs font-bold shrink-0 transition cursor-pointer shadow-xs"
+                  className="px-3 py-1.5 bg-amber-800 hover:bg-amber-900 text-white rounded-lg text-xs font-semibold shrink-0 transition cursor-pointer shadow-xs"
                 >
                   ⚡ Convert to Production URL
                 </button>
@@ -424,9 +424,9 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             <form onSubmit={handleSaveWebhook} className="pt-5 space-y-5">
               {/* Global / Fallback Webhook URL */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-bold text-[#0F172A] flex items-center justify-between">
+                <label className="block text-xs font-semibold text-[#0F172A] flex items-center justify-between">
                   <span>Global Webhook URL (Default Fallback)</span>
-                  <span className="text-[11px] text-[#0F172A]/60 font-mono">
+                  <span className="text-xs text-[#0F172A]/60 font-mono">
                     Used for all platforms unless overridden below
                   </span>
                 </label>
@@ -449,7 +449,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                       <Sliders className="w-3.5 h-3.5 text-[#1F6D52]" />
                       <span>Dedicated Webhooks per Platform (Optional)</span>
                     </h4>
-                    <p className="text-[11px] text-[#0F172A]/70 mt-0.5">
+                    <p className="text-xs text-[#0F172A]/70 mt-0.5">
                       Configure separate n8n webhook URLs if you have different workflows for Instagram, TikTok, or Facebook.
                     </p>
                   </div>
@@ -475,7 +475,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                           <button
                             type="button"
                             onClick={() => handleSwitchToProduction('instagram')}
-                            className="text-[10px] text-amber-700 font-semibold hover:underline"
+                            className="text-xs text-amber-700 font-semibold hover:underline"
                           >
                             ⚡ Switch to /webhook/
                           </button>
@@ -493,7 +493,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                           type="button"
                           onClick={() => handleRunDiagnosticTest(platformWebhooks.instagram, 'instagram')}
                           disabled={isTestingWebhook || !platformWebhooks.instagram}
-                          className="px-3 py-1.5 bg-[#BD7131] hover:bg-[#A86128] text-white rounded-lg text-[11px] font-bold disabled:opacity-40 cursor-pointer shadow-2xs"
+                          className="px-3 py-1.5 bg-[#BD7131] hover:bg-[#A86128] text-white rounded-lg text-xs font-semibold disabled:opacity-40 cursor-pointer shadow-2xs"
                         >
                           Test
                         </button>
@@ -511,7 +511,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                           <button
                             type="button"
                             onClick={() => handleSwitchToProduction('tiktok')}
-                            className="text-[10px] text-amber-700 font-semibold hover:underline"
+                            className="text-xs text-amber-700 font-semibold hover:underline"
                           >
                             ⚡ Switch to /webhook/
                           </button>
@@ -529,7 +529,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                           type="button"
                           onClick={() => handleRunDiagnosticTest(platformWebhooks.tiktok, 'tiktok')}
                           disabled={isTestingWebhook || !platformWebhooks.tiktok}
-                          className="px-3 py-1.5 bg-[#BD7131] hover:bg-[#A86128] text-white rounded-lg text-[11px] font-bold disabled:opacity-40 cursor-pointer shadow-2xs"
+                          className="px-3 py-1.5 bg-[#BD7131] hover:bg-[#A86128] text-white rounded-lg text-xs font-semibold disabled:opacity-40 cursor-pointer shadow-2xs"
                         >
                           Test
                         </button>
@@ -547,7 +547,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                           <button
                             type="button"
                             onClick={() => handleSwitchToProduction('facebook')}
-                            className="text-[10px] text-amber-700 font-semibold hover:underline"
+                            className="text-xs text-amber-700 font-semibold hover:underline"
                           >
                             ⚡ Switch to /webhook/
                           </button>
@@ -565,7 +565,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                           type="button"
                           onClick={() => handleRunDiagnosticTest(platformWebhooks.facebook, 'facebook')}
                           disabled={isTestingWebhook || !platformWebhooks.facebook}
-                          className="px-3 py-1.5 bg-[#BD7131] hover:bg-[#A86128] text-white rounded-lg text-[11px] font-bold disabled:opacity-40 cursor-pointer shadow-2xs"
+                          className="px-3 py-1.5 bg-[#BD7131] hover:bg-[#A86128] text-white rounded-lg text-xs font-semibold disabled:opacity-40 cursor-pointer shadow-2xs"
                         >
                           Test
                         </button>
@@ -581,7 +581,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   <button
                     type="submit"
                     disabled={isSavingWebhook}
-                    className="px-4 py-2 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-bold shadow-xs transition disabled:opacity-50 cursor-pointer flex items-center space-x-1.5"
+                    className="px-4 py-2 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-semibold shadow-xs transition disabled:opacity-50 cursor-pointer flex items-center space-x-1.5"
                   >
                     {isSavingWebhook ? (
                       <>
@@ -615,7 +615,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   type="button"
                   onClick={() => handleRunDiagnosticTest()}
                   disabled={isTestingWebhook || (!webhookUrl.trim() && !Object.values(platformWebhooks).some(Boolean))}
-                  className="px-4 py-2 bg-[#BD7131] hover:bg-[#A86128] text-white rounded-xl text-xs font-bold shadow-xs transition disabled:opacity-50 cursor-pointer flex items-center space-x-1.5"
+                  className="px-4 py-2 bg-[#BD7131] hover:bg-[#A86128] text-white rounded-xl text-xs font-semibold shadow-xs transition disabled:opacity-50 cursor-pointer flex items-center space-x-1.5"
                 >
                   {isTestingWebhook ? (
                     <>
@@ -654,29 +654,29 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                         : `HTTP ${testResult.httpStatus || 'Error'} — Webhook Request Failed`}
                     </span>
                   </div>
-                  <span className="font-mono text-[11px] bg-white/70 px-2 py-0.5 rounded-md border border-current">
+                  <span className="font-mono text-xs bg-white/70 px-2 py-0.5 rounded-md border border-current">
                     {testResult.durationMs}ms
                   </span>
                 </div>
 
-                <p className="text-[11px] leading-relaxed">
+                <p className="text-xs leading-relaxed">
                   {testResult.confirmationMessage || testResult.errorMessage}
                 </p>
 
                 {testResult.responseBody && (
-                  <div className="bg-white/80 p-2.5 rounded-lg border border-[#DDD7CD] font-mono text-[11px] overflow-x-auto max-h-24">
+                  <div className="bg-white/80 p-2.5 rounded-lg border border-[#DDD7CD] font-mono text-xs overflow-x-auto max-h-24">
                     <strong>n8n Response:</strong> {testResult.responseBody}
                   </div>
                 )}
 
                 <div className="pt-1 flex items-center justify-between">
-                  <span className="text-[10px] text-[#0F172A]/70">
+                  <span className="text-xs text-[#0F172A]/70">
                     If n8n was listening, check your n8n workflow canvas for the trigger output.
                   </span>
                   <button
                     type="button"
                     onClick={() => setShowPayloadDetails(!showPayloadDetails)}
-                    className="text-[11px] font-bold underline cursor-pointer hover:opacity-80 flex items-center gap-1"
+                    className="text-xs font-semibold underline cursor-pointer hover:opacity-80 flex items-center gap-1"
                   >
                     <span>{showPayloadDetails ? 'Hide Dispatched Payload' : 'Inspect Dispatched Payload'}</span>
                     {showPayloadDetails ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
@@ -684,7 +684,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 </div>
 
                 {showPayloadDetails && testResult.dispatchedPayload && (
-                  <pre className="mt-2 p-3 bg-[#F8F6F1] rounded-lg border border-[#DDD7CD] text-[10px] font-mono text-[#0F172A] overflow-x-auto max-h-48">
+                  <pre className="mt-2 p-3 bg-[#F8F6F1] rounded-lg border border-[#DDD7CD] text-xs font-mono text-[#0F172A] overflow-x-auto max-h-48">
                     {JSON.stringify(testResult.dispatchedPayload, null, 2)}
                   </pre>
                 )}
@@ -722,7 +722,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
                   <thead>
-                    <tr className="border-b border-[#DDD7CD] text-[11px] text-[#0F172A]/60 font-semibold">
+                    <tr className="border-b border-[#DDD7CD] text-xs text-[#0F172A]/60 font-semibold">
                       <th className="py-2 pr-3">Timestamp</th>
                       <th className="py-2 px-2">Event</th>
                       <th className="py-2 px-2">Platform</th>
@@ -732,7 +732,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   </thead>
                   <tbody className="divide-y divide-[#DDD7CD]/50">
                     {webhookLogs.map((log: any, idx: number) => (
-                      <tr key={log.id || idx} className="hover:bg-[#F8F6F1]/60 font-mono text-[11px]">
+                      <tr key={log.id || idx} className="hover:bg-[#F8F6F1]/60 font-mono text-xs">
                         <td className="py-2 pr-3 text-[#0F172A]/80 whitespace-nowrap">
                           {new Date(log.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                         </td>
@@ -746,7 +746,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                         </td>
                         <td className="py-2 px-2">
                           <span
-                            className={`inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                            className={`inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-xs font-bold ${
                               log.success
                                 ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                                 : 'bg-rose-50 text-rose-800 border border-rose-200'
@@ -786,7 +786,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             <form onSubmit={handleSavePreferences} className="pt-5 space-y-4">
               {/* Time Zone Selection */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-bold text-[#0F172A] flex items-center gap-1.5">
+                <label className="block text-xs font-semibold text-[#0F172A] flex items-center gap-1.5">
                   <Globe className="w-3.5 h-3.5 text-[#1F6D52]" />
                   <span>Publishing Time Zone</span>
                 </label>
@@ -807,7 +807,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
                   <option value="Australia/Sydney">Australia/Sydney (AEST)</option>
                 </select>
-                <p className="text-[11px] text-[#0F172A]/60 font-mono">
+                <p className="text-xs text-[#0F172A]/60 font-mono">
                   Browser detected: {Intl.DateTimeFormat().resolvedOptions().timeZone}
                 </p>
               </div>
@@ -815,7 +815,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               {/* Time Format */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-[#0F172A] flex items-center gap-1.5">
+                  <label className="block text-xs font-semibold text-[#0F172A] flex items-center gap-1.5">
                     <Clock className="w-3.5 h-3.5 text-[#1F6D52]" />
                     <span>Clock Format</span>
                   </label>
@@ -830,7 +830,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-[#0F172A]">
+                  <label className="block text-xs font-semibold text-[#0F172A]">
                     Default Lead (Hours)
                   </label>
                   <input
@@ -851,7 +851,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                     <span className="text-xs font-bold text-[#0F172A] block">
                       Autoplay Video Hover
                     </span>
-                    <span className="text-[10px] text-[#0F172A]/60">
+                    <span className="text-xs text-[#0F172A]/60">
                       Preview video cards on hover in library
                     </span>
                   </div>
@@ -869,7 +869,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                       <Bell className="w-3 h-3 text-[#1F6D52]" />
                       <span>Live Toast Notifications</span>
                     </span>
-                    <span className="text-[10px] text-[#0F172A]/60">
+                    <span className="text-xs text-[#0F172A]/60">
                       Show toasts on schedule and publish events
                     </span>
                   </div>
@@ -886,7 +886,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 <button
                   type="submit"
                   disabled={isSavingPreferences}
-                  className="px-4 py-2 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-bold shadow-xs transition disabled:opacity-50 cursor-pointer"
+                  className="px-4 py-2 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-semibold shadow-xs transition disabled:opacity-50 cursor-pointer"
                 >
                   {isSavingPreferences ? 'Saving...' : 'Save App Preferences'}
                 </button>
@@ -925,7 +925,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               Dispatched with real-time day, date, month, year, video download link, and metadata:
             </p>
 
-            <pre className="p-3 bg-[#F8F6F1] rounded-xl border border-[#DDD7CD] text-[10px] font-mono text-[#0F172A] overflow-x-auto max-h-[180px]">
+            <pre className="p-3 bg-[#F8F6F1] rounded-xl border border-[#DDD7CD] text-xs font-mono text-[#0F172A] overflow-x-auto max-h-[180px]">
               {contractExample}
             </pre>
           </div>
@@ -939,17 +939,17 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div className="p-2.5 bg-[#F8F6F1] rounded-xl border border-[#DDD7CD]">
-                <div className="text-[10px] text-[#0F172A]/60">Stored Videos</div>
+                <div className="text-xs text-[#0F172A]/60">Stored Videos</div>
                 <div className="text-sm font-bold font-mono text-[#1F6D52]">{videoCount}</div>
               </div>
 
               <div className="p-2.5 bg-[#F8F6F1] rounded-xl border border-[#DDD7CD]">
-                <div className="text-[10px] text-[#0F172A]/60">Total Posts</div>
+                <div className="text-xs text-[#0F172A]/60">Total Posts</div>
                 <div className="text-sm font-bold font-mono text-[#1F6D52]">{postCount}</div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between p-2.5 bg-[#F8F6F1] rounded-xl border border-[#DDD7CD] text-[11px]">
+            <div className="flex items-center justify-between p-2.5 bg-[#F8F6F1] rounded-xl border border-[#DDD7CD] text-xs">
               <span className="text-[#0F172A]/70 font-medium">Scheduler Daemon:</span>
               <span className="font-semibold text-emerald-800 flex items-center gap-1">
                 <CheckCircle2 className="w-3 h-3 text-[#1F6D52]" />

@@ -158,49 +158,49 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
     switch (status) {
       case 'published':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
             <CheckCircle2 className="w-3 h-3 text-[#1F6D52]" />
             <span>Published</span>
           </span>
         );
       case 'pending_confirmation':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-sky-50 text-sky-800 border border-sky-200">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-50 text-sky-800 border border-sky-200">
             <Clock className="w-3 h-3 text-sky-600" />
             <span>Pending Confirmation / Test</span>
           </span>
         );
       case 'publishing':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 animate-pulse">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 animate-pulse">
             <Send className="w-3 h-3 text-[#1F6D52]" />
             <span>Publishing...</span>
           </span>
         );
       case 'failed':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-rose-50 text-rose-800 border border-rose-200">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-800 border border-rose-200">
             <AlertCircle className="w-3 h-3 text-rose-700" />
             <span>Failed</span>
           </span>
         );
       case 'cancelled':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#F8F6F1] text-[#0F172A]/60 border border-[#DDD7CD]">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#F8F6F1] text-[#0F172A]/60 border border-[#DDD7CD]">
             <XCircle className="w-3 h-3" />
             <span>Cancelled</span>
           </span>
         );
       case 'scheduled':
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200">
             <Clock className="w-3 h-3 text-[#BD7131]" />
             <span>Scheduled</span>
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#F8F6F1] text-[#0F172A]/60 border border-[#DDD7CD]">
+          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#F8F6F1] text-[#0F172A]/60 border border-[#DDD7CD]">
             <span>{status}</span>
           </span>
         );
@@ -214,7 +214,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
       case 'post_failed':
         return <AlertCircle className="w-4 h-4 text-rose-700" />;
       case 'post_cancelled':
-        return <XCircle className="w-4 h-4 text-[#0F172A]/50" />;
+        return <XCircle className="w-4 h-4 text-[#0F172A]/60" />;
       case 'post_scheduled':
       case 'post_created':
         return <Clock className="w-4 h-4 text-[#BD7131]" />;
@@ -262,7 +262,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
           </div>
           <button
             onClick={() => setActionError(null)}
-            className="text-rose-600 hover:text-rose-900 font-bold ml-3 cursor-pointer"
+            className="text-rose-600 hover:text-rose-900 font-semibold ml-3 cursor-pointer"
           >
             ✕
           </button>
@@ -273,12 +273,12 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#DDD7CD]">
         <div>
           <div className="flex items-center space-x-2.5">
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#111827] tracking-tight">
+            <h1 className="text-2xl font-bold text-[#111827] tracking-tight">
               Publishing History
             </h1>
           </div>
           <div className="mt-2.5 inline-flex items-center px-4 py-2 rounded-xl bg-white/90 border border-[#D1D5DB] shadow-xs">
-            <p className="text-base sm:text-lg font-bold text-[#111827] tracking-tight">
+            <p className="text-sm font-medium text-[#111827]">
               Actual publishing outcomes, platform responses, failed attempts, and persistent system audit trail.
             </p>
           </div>
@@ -330,7 +330,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
             {/* Case A: No outcomes exist at all */}
             {outcomePosts.length === 0 ? (
               <div className="text-center py-16 px-4 bg-[#F4F1EB] border border-dashed border-[#DDD7CD] rounded-2xl">
-                <div className="w-12 h-12 rounded-2xl bg-[#F8F6F1] flex items-center justify-center mx-auto text-[#0F172A]/50 mb-3 border border-[#DDD7CD]">
+                <div className="w-12 h-12 rounded-2xl bg-[#F8F6F1] flex items-center justify-center mx-auto text-[#0F172A]/60 mb-3 border border-[#DDD7CD]">
                   <History className="w-6 h-6 text-[#1F6D52]" />
                 </div>
                 <h3 className="text-base font-bold text-[#0F172A]">No Publishing Outcomes Yet</h3>
@@ -344,7 +344,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
             ) : filteredPosts.length === 0 ? (
               /* Case B: Outcomes exist, but filter criteria produced 0 matches */
               <div className="text-center py-14 px-4 bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl">
-                <div className="w-10 h-10 rounded-xl bg-[#F8F6F1] flex items-center justify-center mx-auto text-[#0F172A]/50 mb-3 border border-[#DDD7CD]">
+                <div className="w-10 h-10 rounded-xl bg-[#F8F6F1] flex items-center justify-center mx-auto text-[#0F172A]/60 mb-3 border border-[#DDD7CD]">
                   <Filter className="w-5 h-5 text-[#BD7131]" />
                 </div>
                 <h3 className="text-sm font-bold text-[#0F172A]">No Outcomes Match Selected Filters</h3>
@@ -356,7 +356,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
                 </p>
                 <button
                   onClick={resetOutcomeFilters}
-                  className="mt-4 px-3.5 py-1.5 rounded-xl bg-[#1F6D52] hover:bg-[#1F6D52]/90 text-white text-xs font-bold transition shadow-2xs cursor-pointer"
+                  className="mt-4 px-3.5 py-1.5 rounded-xl bg-[#1F6D52] hover:bg-[#1F6D52]/90 text-white text-xs font-semibold transition shadow-2xs cursor-pointer"
                 >
                   Reset Filters
                 </button>
@@ -401,7 +401,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
                           <h3 className="text-sm font-bold text-[#0F172A] truncate">
                             {post.title}
                           </h3>
-                          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-[#0F172A]/60 mt-0.5">
+                          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-[#0F172A]/60 mt-0.5">
                             {post.video?.originalName && (
                               <span className="font-mono text-[#0F172A]/70 truncate max-w-xs">
                                 {post.video.originalName}
@@ -419,7 +419,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
                         {getStatusBadge(post.status)}
                         <button
                           onClick={() => setPostToDelete(post)}
-                          className="p-1.5 text-[#0F172A]/40 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition cursor-pointer"
+                          className="p-1.5 text-[#0F172A]/60 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition cursor-pointer"
                           title="Delete Post Record"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -452,7 +452,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
                           >
                             <div>
                               <div className="flex items-center justify-between mb-1.5">
-                                <span className="font-bold text-[#0F172A] uppercase text-[11px] tracking-wide">
+                                <span className="font-bold text-[#0F172A] uppercase text-xs tracking-wide">
                                   {getPlatformLabel(plat)}
                                 </span>
                                 {getStatusBadge(platConfig.status)}
@@ -460,7 +460,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
 
                               {/* Caption / Content preview */}
                               {platConfig.caption && (
-                                <p className="text-[11px] text-[#0F172A]/70 line-clamp-2 italic mb-2">
+                                <p className="text-xs text-[#0F172A]/70 line-clamp-2 italic mb-2">
                                   &ldquo;{platConfig.caption}&rdquo;
                                 </p>
                               )}
@@ -469,7 +469,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
                               {isPublished && (
                                 <div className="space-y-1.5 pt-1 border-t border-[#DDD7CD]/60">
                                   {platConfig.publishedAt && (
-                                    <div className="text-[11px] text-[#0F172A]/70 flex items-center space-x-1">
+                                    <div className="text-xs text-[#0F172A]/70 flex items-center space-x-1">
                                       <CheckCircle2 className="w-3 h-3 text-[#1F6D52]" />
                                       <span>
                                         Published{' '}
@@ -485,7 +485,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
                                     </div>
                                   )}
                                   {platConfig.externalPostId && (
-                                    <div className="text-[10px] font-mono text-[#0F172A]/60 truncate bg-[#F4F1EB] px-2 py-0.5 rounded border border-[#DDD7CD]">
+                                    <div className="text-xs font-mono text-[#0F172A]/60 truncate bg-[#F4F1EB] px-2 py-0.5 rounded border border-[#DDD7CD]">
                                       ID: {platConfig.externalPostId}
                                     </div>
                                   )}
@@ -494,7 +494,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
                                       href={platConfig.externalPostUrl}
                                       target="_blank"
                                       rel="noreferrer"
-                                      className="inline-flex items-center space-x-1 text-[11px] text-[#1F6D52] hover:underline font-semibold mt-1"
+                                      className="inline-flex items-center space-x-1 text-xs text-[#1F6D52] hover:underline font-semibold mt-1"
                                     >
                                       <span>View Live Post</span>
                                       <ExternalLink className="w-3 h-3" />
@@ -513,7 +513,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
                                         'Platform response: API error during publishing'}
                                     </span>
                                   </div>
-                                  <div className="text-[10px] text-[#0F172A]/50 font-mono flex items-center justify-between">
+                                  <div className="text-xs text-[#0F172A]/60 font-mono flex items-center justify-between">
                                     <span>Attempts: {platConfig.attemptCount || 1}</span>
                                     {platConfig.scheduledAt && (
                                       <span>
@@ -529,14 +529,14 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
 
                               {/* Cancelled state */}
                               {isCancelled && (
-                                <div className="text-[11px] text-[#0F172A]/60 pt-1 border-t border-[#DDD7CD]/60">
+                                <div className="text-xs text-[#0F172A]/60 pt-1 border-t border-[#DDD7CD]/60">
                                   Publishing job cancelled prior to dispatch.
                                 </div>
                               )}
 
                               {/* Scheduled state indicator */}
                               {isScheduled && (
-                                <div className="text-[11px] text-[#0F172A]/70 font-mono pt-1 border-t border-[#DDD7CD]/60">
+                                <div className="text-xs text-[#0F172A]/70 font-mono pt-1 border-t border-[#DDD7CD]/60">
                                   Scheduled for:{' '}
                                   {platConfig.scheduledAt
                                     ? new Date(platConfig.scheduledAt).toLocaleString([], {
@@ -555,7 +555,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
                               <button
                                 onClick={() => handleRetry(post.id, plat)}
                                 disabled={isActionLoading}
-                                className="w-full mt-2 py-1.5 px-3 rounded-lg bg-white hover:bg-rose-50 border border-rose-300 text-rose-800 text-xs font-bold transition flex items-center justify-center space-x-1.5 cursor-pointer shadow-2xs disabled:opacity-50"
+                                className="w-full mt-2 py-1.5 px-3 rounded-lg bg-white hover:bg-rose-50 border border-rose-300 text-rose-800 text-xs font-semibold transition flex items-center justify-center space-x-1.5 cursor-pointer shadow-2xs disabled:opacity-50"
                               >
                                 <RotateCcw
                                   className={`w-3.5 h-3.5 ${
@@ -619,7 +619,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
           <div className="space-y-2.5">
             {filteredActivities.length === 0 ? (
               <div className="text-center py-12 px-4 bg-[#F8F6F1] border border-dashed border-[#DDD7CD] rounded-xl">
-                <Activity className="w-6 h-6 text-[#0F172A]/40 mx-auto mb-2" />
+                <Activity className="w-6 h-6 text-[#0F172A]/60 mx-auto mb-2" />
                 <h4 className="text-sm font-bold text-[#0F172A]">No Audit Events Found</h4>
                 <p className="text-xs text-[#0F172A]/60 max-w-sm mx-auto mt-1">
                   {auditCategory === 'all'
@@ -651,12 +651,12 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
                         <div className="flex items-center space-x-2">
                           <span className="font-bold text-[#0F172A]">{act.title}</span>
                           {act.platform && (
-                            <span className="text-[10px] uppercase font-mono px-1.5 py-0.2 rounded bg-[#DDD7CD]/40 text-[#0F172A]/80 font-semibold">
+                            <span className="text-xs uppercase font-mono px-1.5 py-0.2 rounded bg-[#DDD7CD]/40 text-[#0F172A]/80 font-semibold">
                               {getPlatformLabel(act.platform)}
                             </span>
                           )}
                         </div>
-                        <span className="text-[11px] font-mono text-[#0F172A]/50">
+                        <span className="text-xs font-mono text-[#0F172A]/60">
                           {new Date(act.timestamp).toLocaleString([], {
                             weekday: 'short',
                             month: 'short',
@@ -673,7 +673,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
 
                       {/* References context */}
                       {(videoName || act.videoId || act.postId) && (
-                        <div className="flex flex-wrap items-center gap-2 mt-2 pt-2 border-t border-[#DDD7CD]/50 text-[10px] text-[#0F172A]/60 font-mono">
+                        <div className="flex flex-wrap items-center gap-2 mt-2 pt-2 border-t border-[#DDD7CD]/50 text-xs text-[#0F172A]/60 font-mono">
                           {videoName && (
                             <span className="inline-flex items-center space-x-1 bg-[#F4F1EB] px-2 py-0.5 rounded border border-[#DDD7CD]">
                               <Film className="w-3 h-3 text-[#1F6D52]" />
@@ -716,7 +716,7 @@ export const PublishingHistory: React.FC<PublishingHistoryProps> = ({
               <button
                 onClick={confirmDelete}
                 disabled={actionLoadingId === postToDelete.id}
-                className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-rose-700 hover:bg-rose-800 transition shadow-xs cursor-pointer flex items-center space-x-1.5"
+                className="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-rose-700 hover:bg-rose-800 transition shadow-xs cursor-pointer flex items-center space-x-1.5"
               >
                 {actionLoadingId === postToDelete.id ? (
                   <>

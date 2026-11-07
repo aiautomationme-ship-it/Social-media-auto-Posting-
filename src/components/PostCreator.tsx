@@ -524,7 +524,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
       {/* Header */}
       <div className="pb-4 border-b border-[#DDD7CD]">
         <div className="flex items-center space-x-2.5">
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">
+          <h1 className="text-2xl font-bold text-[#0F172A] tracking-tight">
             Create &amp; Schedule Post
           </h1>
           <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold border border-emerald-200">
@@ -549,7 +549,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
           {/* STEP 1: ONE Coherent Selected Video Component */}
           <div className="bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl p-5 shadow-xs">
             <div className="flex items-center justify-between mb-3">
-              <label className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+              <label className="text-base font-semibold text-[#0F172A] flex items-center gap-2">
                 <Film className="w-4 h-4 text-[#1F6D52]" />
                 <span>1. Selected Video</span>
               </label>
@@ -566,14 +566,14 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
 
             {videos.length === 0 ? (
               <div className="p-6 bg-[#F8F6F1] border border-[#DDD7CD] rounded-xl text-center space-y-3">
-                <Film className="w-8 h-8 text-[#0F172A]/40 mx-auto" />
+                <Film className="w-8 h-8 text-[#0F172A]/60 mx-auto" />
                 <p className="text-xs text-[#0F172A]/70 max-w-sm mx-auto">
                   No video assets are currently stored in your library. Upload videos in the Video Library before creating a post.
                 </p>
                 <button
                   type="button"
                   onClick={onNavigateToUpload}
-                  className="px-4 py-2 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-bold transition shadow-xs cursor-pointer inline-flex items-center space-x-1.5"
+                  className="px-4 py-2 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs font-semibold transition shadow-xs cursor-pointer inline-flex items-center space-x-1.5"
                 >
                   <span>Open Video Library</span>
                 </button>
@@ -599,7 +599,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                       />
                     )}
                     {formatDuration(selectedVideo.duration) && (
-                      <span className="absolute bottom-1 right-1 text-[9px] font-mono font-bold bg-black/85 text-white px-1.5 py-0.5 rounded">
+                      <span className="absolute bottom-1 right-1 text-xs font-mono font-bold bg-black/85 text-white px-1.5 py-0.5 rounded">
                         {formatDuration(selectedVideo.duration)}
                       </span>
                     )}
@@ -613,7 +613,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                     >
                       {selectedVideo.originalName}
                     </h4>
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-[#0F172A]/65 mt-1 font-mono">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-[#0F172A]/65 mt-1 font-mono">
                       <span>{(selectedVideo.fileSize / (1024 * 1024)).toFixed(1)} MB</span>
                       {selectedVideo.width && selectedVideo.height && (
                         <>
@@ -633,7 +633,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                     </div>
 
                     <div className="mt-2">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
                         <CheckCircle2 className="w-3 h-3 text-[#1F6D52]" />
                         <span>Ready to Publish</span>
                       </span>
@@ -645,7 +645,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowVideoPickerModal(true)}
-                  className="w-full sm:w-auto px-3.5 py-2 rounded-xl bg-[#F4F1EB] hover:bg-white text-xs font-bold text-[#0F172A] border border-[#DDD7CD] transition shadow-2xs cursor-pointer flex items-center justify-center space-x-1.5 shrink-0"
+                  className="w-full sm:w-auto px-3.5 py-2 rounded-xl bg-[#F4F1EB] hover:bg-white text-xs font-semibold text-[#0F172A] border border-[#DDD7CD] transition shadow-2xs cursor-pointer flex items-center justify-center space-x-1.5 shrink-0"
                 >
                   <RefreshCw className="w-3.5 h-3.5 text-[#1F6D52]" />
                   <span>Change Video</span>
@@ -659,8 +659,8 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
           {/* STEP 2: Explicit Platform Selection (No automatic pre-selection) */}
           <div className="bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl p-5 shadow-xs">
             <div className="flex items-center justify-between mb-1.5">
-              <h3 className="text-sm font-bold text-[#0F172A]">2. Destination Platforms</h3>
-              <span className="text-[11px] font-mono text-[#0F172A]/60">
+              <h3 className="text-base font-bold text-[#0F172A]">2. Destination Platforms</h3>
+              <span className="text-xs font-mono text-[#0F172A]/60">
                 {selectedPlatformsList.length} of 3 selected
               </span>
             </div>
@@ -688,15 +688,15 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                       className="rounded text-[#1F6D52] cursor-pointer"
                     />
                   </div>
-                  <p className="text-[11px] text-[#0F172A]/60">
+                  <p className="text-xs text-[#0F172A]/60">
                     Vertical short video (up to 90s)
                   </p>
                 </div>
-                <div className="mt-3 pt-2 border-t border-[#DDD7CD]/70 flex items-center justify-between text-[10px]">
-                  <span className={enabledPlatforms.instagram ? 'text-emerald-800 font-bold' : 'text-[#0F172A]/50'}>
+                <div className="mt-3 pt-2 border-t border-[#DDD7CD]/70 flex items-center justify-between text-xs">
+                  <span className={enabledPlatforms.instagram ? 'text-emerald-800 font-bold' : 'text-[#0F172A]/60'}>
                     {enabledPlatforms.instagram ? 'Selected' : 'Click to select'}
                   </span>
-                  <span className="text-[10px] text-[#0F172A]/50 font-mono">Reels</span>
+                  <span className="text-xs text-[#0F172A]/60 font-mono">Reels</span>
                 </div>
               </div>
 
@@ -719,15 +719,15 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                       className="rounded text-[#1F6D52] cursor-pointer"
                     />
                   </div>
-                  <p className="text-[11px] text-[#0F172A]/60">
+                  <p className="text-xs text-[#0F172A]/60">
                     Page video post &amp; Watch feed
                   </p>
                 </div>
-                <div className="mt-3 pt-2 border-t border-[#DDD7CD]/70 flex items-center justify-between text-[10px]">
-                  <span className={enabledPlatforms.facebook ? 'text-emerald-800 font-bold' : 'text-[#0F172A]/50'}>
+                <div className="mt-3 pt-2 border-t border-[#DDD7CD]/70 flex items-center justify-between text-xs">
+                  <span className={enabledPlatforms.facebook ? 'text-emerald-800 font-bold' : 'text-[#0F172A]/60'}>
                     {enabledPlatforms.facebook ? 'Selected' : 'Click to select'}
                   </span>
-                  <span className="text-[10px] text-[#0F172A]/50 font-mono">Page</span>
+                  <span className="text-xs text-[#0F172A]/60 font-mono">Page</span>
                 </div>
               </div>
 
@@ -750,15 +750,15 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                       className="rounded text-[#1F6D52] cursor-pointer"
                     />
                   </div>
-                  <p className="text-[11px] text-[#0F172A]/60">
+                  <p className="text-xs text-[#0F172A]/60">
                     Short-form video for FYP feed
                   </p>
                 </div>
-                <div className="mt-3 pt-2 border-t border-[#DDD7CD]/70 flex items-center justify-between text-[10px]">
-                  <span className={enabledPlatforms.tiktok ? 'text-emerald-800 font-bold' : 'text-[#0F172A]/50'}>
+                <div className="mt-3 pt-2 border-t border-[#DDD7CD]/70 flex items-center justify-between text-xs">
+                  <span className={enabledPlatforms.tiktok ? 'text-emerald-800 font-bold' : 'text-[#0F172A]/60'}>
                     {enabledPlatforms.tiktok ? 'Selected' : 'Click to select'}
                   </span>
-                  <span className="text-[10px] text-[#0F172A]/50 font-mono">FYP</span>
+                  <span className="text-xs text-[#0F172A]/60 font-mono">FYP</span>
                 </div>
               </div>
             </div>
@@ -774,14 +774,14 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
           {/* STEP 3: Platform-Specific Publishing Details (Only shown for selected platforms) */}
           <div className="bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl p-5 shadow-xs space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-[#0F172A]">
+              <h3 className="text-base font-bold text-[#0F172A]">
                 3. Platform-Specific Captions &amp; Controls
               </h3>
             </div>
 
             {selectedPlatformsList.length === 0 ? (
               <div className="p-6 bg-[#F8F6F1] border border-[#DDD7CD] rounded-xl text-center space-y-2">
-                <Sliders className="w-6 h-6 text-[#0F172A]/40 mx-auto" />
+                <Sliders className="w-6 h-6 text-[#0F172A]/60 mx-auto" />
                 <p className="text-xs font-semibold text-[#0F172A]">No Platforms Selected</p>
                 <p className="text-xs text-[#0F172A]/65 max-w-sm mx-auto">
                   Select one or more destination platforms in step 2 to configure captions, hashtags, and interaction settings.
@@ -820,48 +820,42 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                 {/* Tab: Instagram Reels */}
                 {activeTextTab === 'instagram' && enabledPlatforms.instagram && (
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between text-xs text-[#0F172A]/70">
-                      <label className="font-bold text-[#0F172A]">
+                    <div className="flex items-center justify-between">
+                      <label className="font-semibold text-sm text-[#111827] tracking-tight">
                         Instagram Reels Caption &amp; Hashtags
                       </label>
-                      <span className={`font-mono text-[11px] ${instagramCaption.length > 2200 ? 'text-rose-700 font-bold' : ''}`}>
+                      <span className={`font-mono text-xs font-semibold px-2 py-0.5 rounded-md bg-white border ${instagramCaption.length > 2200 ? 'text-rose-700 border-rose-300' : 'text-[#374151] border-[#D1D5DB]'}`}>
                         {instagramCaption.length}/2200
                       </span>
                     </div>
                     <textarea
-                      rows={4}
+                      rows={6}
                       value={instagramCaption}
                       onChange={(e) => setInstagramCaption(e.target.value)}
-                      placeholder="Write an engaging Instagram Reel caption, call to action, and hashtags (#reels #trending)..."
-                      className="w-full bg-[#F8F6F1] border border-[#DDD7CD] rounded-xl p-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#1F6D52] shadow-2xs"
+                      placeholder="Write an engaging caption, hashtags (#reels #trending), and tags..."
+                      className="w-full bg-white border border-[#D1D5DB] rounded-2xl p-4 text-sm leading-relaxed text-[#111827] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#111827] focus:ring-1 focus:ring-[#111827] shadow-xs"
                     />
-                    <p className="text-[11px] text-[#0F172A]/60">
-                      Supports up to 2,200 characters and 30 hashtags. Recommended format is 9:16 vertical video.
-                    </p>
                   </div>
                 )}
 
                 {/* Tab: Facebook Page */}
                 {activeTextTab === 'facebook' && enabledPlatforms.facebook && (
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between text-xs text-[#0F172A]/70">
-                      <label className="font-bold text-[#0F172A]">
+                    <div className="flex items-center justify-between">
+                      <label className="font-semibold text-sm text-[#111827] tracking-tight">
                         Facebook Page Video Description
                       </label>
-                      <span className={`font-mono text-[11px] ${facebookDescription.length > 5000 ? 'text-rose-700 font-bold' : ''}`}>
+                      <span className={`font-mono text-xs font-semibold px-2 py-0.5 rounded-md bg-white border ${facebookDescription.length > 5000 ? 'text-rose-700 border-rose-300' : 'text-[#374151] border-[#D1D5DB]'}`}>
                         {facebookDescription.length}/5000
                       </span>
                     </div>
                     <textarea
-                      rows={4}
+                      rows={6}
                       value={facebookDescription}
                       onChange={(e) => setFacebookDescription(e.target.value)}
-                      placeholder="Detailed video description and commentary for your Facebook Page followers..."
-                      className="w-full bg-[#F8F6F1] border border-[#DDD7CD] rounded-xl p-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#1F6D52] shadow-2xs"
+                      placeholder="Detailed video description, links, and commentary for your Facebook Page followers..."
+                      className="w-full bg-white border border-[#D1D5DB] rounded-2xl p-4 text-sm leading-relaxed text-[#111827] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#111827] focus:ring-1 focus:ring-[#111827] shadow-xs"
                     />
-                    <p className="text-[11px] text-[#0F172A]/60">
-                      This text appears as the post description on your Facebook Page feed and Watch.
-                    </p>
                   </div>
                 )}
 
@@ -869,25 +863,27 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                 {activeTextTab === 'tiktok' && enabledPlatforms.tiktok && (
                   <div className="space-y-4">
                     <div>
-                      <div className="flex items-center justify-between text-xs text-[#0F172A]/70 mb-1.5">
-                        <label className="font-bold text-[#0F172A]">TikTok Caption &amp; Title</label>
-                        <span className={`font-mono text-[11px] ${tiktokTitle.length > 2200 ? 'text-rose-700 font-bold' : ''}`}>
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="font-semibold text-sm text-[#111827] tracking-tight">
+                          TikTok Caption &amp; Title
+                        </label>
+                        <span className={`font-mono text-xs font-semibold px-2 py-0.5 rounded-md bg-white border ${tiktokTitle.length > 2200 ? 'text-rose-700 border-rose-300' : 'text-[#374151] border-[#D1D5DB]'}`}>
                           {tiktokTitle.length}/2200
                         </span>
                       </div>
                       <textarea
-                        rows={3}
+                        rows={6}
                         value={tiktokTitle}
                         onChange={(e) => setTiktokTitle(e.target.value)}
-                        placeholder="Engaging TikTok hook, audio description, and hashtags (#fyp #viral)..."
-                        className="w-full bg-[#F8F6F1] border border-[#DDD7CD] rounded-xl p-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#1F6D52] shadow-2xs"
+                        placeholder="Write a caption, add hashtags (#fyp, #viral), and mention friends..."
+                        className="w-full bg-white border border-[#D1D5DB] rounded-2xl p-4 text-sm leading-relaxed text-[#111827] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#111827] focus:ring-1 focus:ring-[#111827] shadow-xs"
                       />
                     </div>
 
                     {/* TikTok Specific Controls */}
-                    <div className="bg-[#F8F6F1] p-3.5 rounded-xl border border-[#DDD7CD] space-y-3 text-xs shadow-2xs">
+                    <div className="bg-white p-4 rounded-2xl border border-[#D1D5DB] space-y-3.5 text-xs sm:text-sm shadow-2xs">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                        <span className="font-bold text-[#0F172A]">Audience Privacy</span>
+                        <span className="font-bold text-[#111827] text-sm">Audience Privacy</span>
                         <select
                           value={tiktokSettings.privacyLevel}
                           onChange={(e) =>
@@ -896,7 +892,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                               privacyLevel: e.target.value as any,
                             }))
                           }
-                          className="bg-[#F4F1EB] border border-[#DDD7CD] rounded-lg px-2.5 py-1 text-xs text-[#0F172A] font-semibold"
+                          className="bg-[#F9FAFB] border border-[#D1D5DB] rounded-xl px-3 py-1.5 text-xs sm:text-sm text-[#111827] font-bold cursor-pointer"
                         >
                           <option value="PUBLIC_TO_EVERYONE">Public to Everyone</option>
                           <option value="MUTUAL_FOLLOW_FRIENDS">Friends Only</option>
@@ -904,37 +900,37 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                         </select>
                       </div>
 
-                      <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#DDD7CD]">
-                        <label className="flex items-center space-x-1.5 cursor-pointer">
+                      <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#E5E7EB]">
+                        <label className="flex items-center space-x-2 cursor-pointer text-xs sm:text-sm font-semibold text-[#111827]">
                           <input
                             type="checkbox"
                             checked={tiktokSettings.allowComment}
                             onChange={(e) =>
                               setTiktokSettings((p) => ({ ...p, allowComment: e.target.checked }))
                             }
-                            className="rounded text-[#1F6D52] cursor-pointer"
+                            className="rounded text-[#111827] w-4 h-4 cursor-pointer"
                           />
                           <span>Comments</span>
                         </label>
-                        <label className="flex items-center space-x-1.5 cursor-pointer">
+                        <label className="flex items-center space-x-2 cursor-pointer text-xs sm:text-sm font-semibold text-[#111827]">
                           <input
                             type="checkbox"
                             checked={tiktokSettings.allowDuet}
                             onChange={(e) =>
                               setTiktokSettings((p) => ({ ...p, allowDuet: e.target.checked }))
                             }
-                            className="rounded text-[#1F6D52] cursor-pointer"
+                            className="rounded text-[#111827] w-4 h-4 cursor-pointer"
                           />
                           <span>Duet</span>
                         </label>
-                        <label className="flex items-center space-x-1.5 cursor-pointer">
+                        <label className="flex items-center space-x-2 cursor-pointer text-xs sm:text-sm font-semibold text-[#111827]">
                           <input
                             type="checkbox"
                             checked={tiktokSettings.allowStitch}
                             onChange={(e) =>
                               setTiktokSettings((p) => ({ ...p, allowStitch: e.target.checked }))
                             }
-                            className="rounded text-[#1F6D52] cursor-pointer"
+                            className="rounded text-[#111827] w-4 h-4 cursor-pointer"
                           />
                           <span>Stitch</span>
                         </label>
@@ -949,10 +945,10 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
           {/* STEP 4: Publishing and Scheduling Controls */}
           <div className="bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl p-5 shadow-xs space-y-4">
             <div className="flex items-center justify-between pb-2 border-b border-[#DDD7CD]">
-              <h3 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+              <h3 className="text-base font-bold text-[#0F172A] flex items-center gap-2">
                 <span>4. Publishing &amp; Scheduling Controls</span>
               </h3>
-              <div className="flex items-center space-x-1.5 text-[11px] font-mono text-[#0F172A]/80 bg-[#F8F6F1] px-2.5 py-1 rounded-lg border border-[#DDD7CD]">
+              <div className="flex items-center space-x-1.5 text-xs font-mono text-[#0F172A]/80 bg-[#F8F6F1] px-2.5 py-1 rounded-lg border border-[#DDD7CD]">
                 <Clock className="w-3.5 h-3.5 text-[#1F6D52]" />
                 <span className="font-semibold">{realTime.formatted}</span>
               </div>
@@ -963,37 +959,27 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
               <button
                 type="button"
                 onClick={() => setPublishMode('scheduled')}
-                className={`p-3.5 rounded-xl border text-left transition shadow-2xs cursor-pointer ${
+                className={`py-3 px-4 rounded-xl border text-center sm:text-left transition shadow-2xs cursor-pointer flex items-center justify-center sm:justify-start space-x-2.5 ${
                   publishMode === 'scheduled'
-                    ? 'bg-[#F8F6F1] border-[#1F6D52] ring-1 ring-[#1F6D52]/40 text-[#0F172A]'
-                    : 'bg-[#F8F6F1]/50 border-[#DDD7CD] text-[#0F172A]/70 hover:bg-[#F8F6F1]'
+                    ? 'bg-white border-[#111827] ring-2 ring-[#111827] text-[#111827] font-bold'
+                    : 'bg-white/80 border-[#D1D5DB] text-[#374151] hover:bg-white hover:border-[#9CA3AF]'
                 }`}
               >
-                <div className="flex items-center space-x-2 font-bold text-xs mb-1">
-                  <Calendar className="w-4 h-4 text-[#1F6D52]" />
-                  <span>Schedule for Future Date/Time</span>
-                </div>
-                <p className="text-[11px] text-[#0F172A]/60">
-                  Automated background publishing via daemon at your appointed real-time slot.
-                </p>
+                <Calendar className={`w-4 h-4 shrink-0 ${publishMode === 'scheduled' ? 'text-[#111827]' : 'text-[#6B7280]'}`} />
+                <span className="text-sm font-bold tracking-tight">Schedule for Future Date/Time</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setPublishMode('immediate')}
-                className={`p-3.5 rounded-xl border text-left transition shadow-2xs cursor-pointer ${
+                className={`py-3 px-4 rounded-xl border text-center sm:text-left transition shadow-2xs cursor-pointer flex items-center justify-center sm:justify-start space-x-2.5 ${
                   publishMode === 'immediate'
-                    ? 'bg-[#F8F6F1] border-[#1F6D52] ring-1 ring-[#1F6D52]/40 text-[#0F172A]'
-                    : 'bg-[#F8F6F1]/50 border-[#DDD7CD] text-[#0F172A]/70 hover:bg-[#F8F6F1]'
+                    ? 'bg-white border-[#111827] ring-2 ring-[#111827] text-[#111827] font-bold'
+                    : 'bg-white/80 border-[#D1D5DB] text-[#374151] hover:bg-white hover:border-[#9CA3AF]'
                 }`}
               >
-                <div className="flex items-center space-x-2 font-bold text-xs mb-1">
-                  <Send className="w-4 h-4 text-[#1F6D52]" />
-                  <span>Publish Immediately (Publish Now)</span>
-                </div>
-                <p className="text-[11px] text-[#0F172A]/60">
-                  Instantly dispatches post &amp; video payload directly to your n8n Webhook right now.
-                </p>
+                <Send className={`w-4 h-4 shrink-0 ${publishMode === 'immediate' ? 'text-[#111827]' : 'text-[#6B7280]'}`} />
+                <span className="text-sm font-bold tracking-tight">Publish Immediately (Publish Now)</span>
               </button>
             </div>
 
@@ -1003,7 +989,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                   <Zap className="w-4 h-4" />
                   <span>Immediate Publishing Ready</span>
                 </div>
-                <p className="text-[11px] leading-relaxed">
+                <p className="text-xs leading-relaxed">
                   Clicking <strong>&quot;Publish Now&quot;</strong> below will send the video metadata and direct video link to your configured webhook at real-time <strong>{realTime.time}</strong> ({realTime.day}, {realTime.date} {realTime.month} {realTime.year}).
                 </p>
               </div>
@@ -1013,52 +999,12 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
               <div className="space-y-4 pt-2">
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <label className="text-xs font-bold text-[#0F172A]">
+                    <label className="text-xs font-semibold text-[#0F172A]">
                       Scheduled Date &amp; Time
                     </label>
-                    <span className="text-[11px] text-[#1F6D52] font-mono font-medium">
+                    <span className="text-xs text-[#1F6D52] font-mono font-medium">
                       Time Zone: {userTimezone}
                     </span>
-                  </div>
-
-                  {/* Dynamic Real-Time Shortcut Chips */}
-                  <div className="flex flex-wrap items-center gap-1.5 mb-2.5">
-                    <span className="text-[10px] text-[#0F172A]/60 font-semibold mr-1">Quick Presets:</span>
-                    <button
-                      type="button"
-                      onClick={() => applyScheduleShortcut('15m')}
-                      className="px-2 py-1 text-[10px] font-semibold bg-[#F8F6F1] hover:bg-[#DDD7CD]/50 border border-[#DDD7CD] rounded-md transition cursor-pointer"
-                    >
-                      +15 Mins
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => applyScheduleShortcut('1h')}
-                      className="px-2 py-1 text-[10px] font-semibold bg-[#F8F6F1] hover:bg-[#DDD7CD]/50 border border-[#DDD7CD] rounded-md transition cursor-pointer"
-                    >
-                      +1 Hour
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => applyScheduleShortcut('tonight')}
-                      className="px-2 py-1 text-[10px] font-semibold bg-[#F8F6F1] hover:bg-[#DDD7CD]/50 border border-[#DDD7CD] rounded-md transition cursor-pointer"
-                    >
-                      Tonight (8 PM)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => applyScheduleShortcut('tomorrow_morning')}
-                      className="px-2 py-1 text-[10px] font-semibold bg-[#F8F6F1] hover:bg-[#DDD7CD]/50 border border-[#DDD7CD] rounded-md transition cursor-pointer"
-                    >
-                      Tomorrow (10 AM)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => applyScheduleShortcut('tomorrow_evening')}
-                      className="px-2 py-1 text-[10px] font-semibold bg-[#F8F6F1] hover:bg-[#DDD7CD]/50 border border-[#DDD7CD] rounded-md transition cursor-pointer"
-                    >
-                      Tomorrow (6 PM)
-                    </button>
                   </div>
 
                   <input
@@ -1066,10 +1012,10 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                     value={defaultScheduleTime}
                     min={getMinScheduledTime()}
                     onChange={(e) => setDefaultScheduleTime(e.target.value)}
-                    className="w-full bg-[#F8F6F1] border border-[#DDD7CD] rounded-xl px-3 py-2 text-[#0F172A] text-xs font-mono font-medium focus:outline-none focus:border-[#1F6D52] shadow-2xs"
+                    className="w-full bg-white border border-[#D1D5DB] rounded-xl px-4 py-3 text-[#111827] text-sm font-mono font-bold focus:outline-none focus:border-[#111827] focus:ring-1 focus:ring-[#111827] shadow-xs cursor-pointer"
                   />
-                  <p className="text-[11px] text-[#0F172A]/60 mt-1">
-                    Dates and times are calculated using the live system clock in your local timezone ({userTimezone}).
+                  <p className="text-xs text-[#4B5563] mt-1.5 font-medium">
+                    Scheduled using live system clock in your local timezone ({userTimezone}).
                   </p>
                 </div>
 
@@ -1089,7 +1035,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                     <div className="space-y-3 bg-[#F8F6F1] p-3.5 rounded-xl border border-[#DDD7CD] shadow-2xs">
                       {enabledPlatforms.instagram && (
                         <div>
-                          <label className="block text-[11px] text-pink-800 font-bold mb-1">
+                          <label className="block text-xs text-pink-800 font-semibold mb-1">
                             Instagram Reels Publish Time
                           </label>
                           <input
@@ -1104,7 +1050,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
 
                       {enabledPlatforms.facebook && (
                         <div>
-                          <label className="block text-[11px] text-blue-800 font-bold mb-1">
+                          <label className="block text-xs text-blue-800 font-semibold mb-1">
                             Facebook Page Publish Time
                           </label>
                           <input
@@ -1119,7 +1065,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
 
                       {enabledPlatforms.tiktok && (
                         <div>
-                          <label className="block text-[11px] text-cyan-800 font-bold mb-1">
+                          <label className="block text-xs text-cyan-800 font-semibold mb-1">
                             TikTok Publish Time
                           </label>
                           <input
@@ -1141,7 +1087,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
             <button
               type="submit"
               disabled={isSubmitting || selectedPlatformsList.length === 0}
-              className="w-full py-3 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs sm:text-sm font-bold shadow-xs transition disabled:opacity-50 flex items-center justify-center space-x-2 cursor-pointer"
+              className="w-full py-3 bg-[#1F6D52] hover:bg-[#185741] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition disabled:opacity-50 flex items-center justify-center space-x-2 cursor-pointer"
             >
               {publishMode === 'immediate' ? (
                 <>
@@ -1164,9 +1110,9 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
             <div className="flex items-center justify-between pb-3 border-b border-[#DDD7CD]">
               <div className="flex items-center space-x-2">
                 <Eye className="w-4 h-4 text-[#1F6D52]" />
-                <h3 className="text-sm font-bold text-[#0F172A]">Draft Preview</h3>
+                <h3 className="text-base font-bold text-[#0F172A]">Draft Preview</h3>
               </div>
-              <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-[#F8F6F1] text-[#0F172A]/70 border border-[#DDD7CD]">
+              <span className="text-xs uppercase font-mono px-2 py-0.5 rounded bg-[#F8F6F1] text-[#0F172A]/70 border border-[#DDD7CD]">
                 Live Draft
               </span>
             </div>
@@ -1208,7 +1154,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                     ? 'TikTok FYP Feed'
                     : 'Facebook Page Watch'}
                 </span>
-                <span className="text-[10px] text-slate-400 font-mono">
+                <span className="text-xs text-slate-400 font-mono">
                   {previewPlatform === 'facebook' ? '16:9 / Video' : '9:16 Vertical'}
                 </span>
               </div>
@@ -1243,7 +1189,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                     <div className="flex items-center space-x-1.5 text-xs font-bold mb-1 text-white">
                       <span>@socialflow</span>
                       {previewPlatform === 'tiktok' && (
-                        <span className="text-[9px] font-mono px-1.5 py-0.2 bg-white/20 rounded font-normal text-slate-200">
+                        <span className="text-xs font-mono px-1.5 py-0.2 bg-white/20 rounded font-medium text-slate-200">
                           {tiktokSettings.privacyLevel === 'PUBLIC_TO_EVERYONE'
                             ? 'Public'
                             : tiktokSettings.privacyLevel === 'MUTUAL_FOLLOW_FRIENDS'
@@ -1262,7 +1208,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                     </p>
 
                     {previewPlatform === 'tiktok' && (
-                      <div className="flex items-center space-x-2 text-[10px] text-slate-400 mt-1 font-mono">
+                      <div className="flex items-center space-x-2 text-xs text-slate-400 mt-1 font-mono">
                         <span>Comments: {tiktokSettings.allowComment ? 'On' : 'Off'}</span>
                         <span>•</span>
                         <span>Duet: {tiktokSettings.allowDuet ? 'On' : 'Off'}</span>
@@ -1275,7 +1221,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
               </div>
             </div>
 
-            <p className="text-[11px] text-[#0F172A]/60 mt-3 text-center">
+            <p className="text-xs text-[#0F172A]/60 mt-3 text-center">
               Accurate live draft preview reflecting selected video and real-time caption.
             </p>
           </div>
@@ -1356,7 +1302,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                           <p className="text-xs font-bold text-[#0F172A] truncate" title={vid.originalName}>
                             {vid.originalName}
                           </p>
-                          <div className="flex items-center space-x-2 text-[10px] text-[#0F172A]/60 font-mono mt-0.5">
+                          <div className="flex items-center space-x-2 text-xs text-[#0F172A]/60 font-mono mt-0.5">
                             <span>{(vid.fileSize / (1024 * 1024)).toFixed(1)} MB</span>
                             {formatDuration(vid.duration) && (
                               <>
@@ -1371,7 +1317,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                       </div>
 
                       {isSelected ? (
-                        <span className="text-[11px] font-bold text-[#1F6D52] flex items-center gap-1 shrink-0">
+                        <span className="text-xs font-bold text-[#1F6D52] flex items-center gap-1 shrink-0">
                           <Check className="w-4 h-4" /> Selected
                         </span>
                       ) : (
@@ -1437,7 +1383,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
 
               <div className="flex justify-between items-start">
                 <span className="text-[#0F172A]/60">Real-time Timestamp:</span>
-                <span className="text-[#0F172A] font-mono text-[11px] text-right">
+                <span className="text-[#0F172A] font-mono text-xs text-right">
                   {realTime.formatted}
                 </span>
               </div>
@@ -1472,7 +1418,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                         : tiktokScheduleTime;
 
                     return (
-                      <div key={plat} className="flex items-center justify-between text-[11px] bg-[#F8F6F1] p-2 rounded-lg border border-[#DDD7CD]">
+                      <div key={plat} className="flex items-center justify-between text-xs bg-[#F8F6F1] p-2 rounded-lg border border-[#DDD7CD]">
                         <span className="font-bold text-[#0F172A]">{label}</span>
                         <span className="text-[#1F6D52] font-semibold">
                           {publishMode === 'immediate'
@@ -1501,7 +1447,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                 type="button"
                 onClick={handleExecuteCreation}
                 disabled={isSubmitting}
-                className="px-5 py-2 text-xs font-bold text-white bg-[#1F6D52] hover:bg-[#185741] rounded-xl shadow-xs transition disabled:opacity-50 cursor-pointer"
+                className="px-5 py-2 text-xs font-semibold text-white bg-[#1F6D52] hover:bg-[#185741] rounded-xl shadow-xs transition disabled:opacity-50 cursor-pointer"
               >
                 {isSubmitting
                   ? 'Processing...'
@@ -1533,12 +1479,12 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                 {publishErrorModal.message}
               </div>
               {publishErrorModal.httpStatus && (
-                <div className="text-[11px] text-[#0F172A]/70">
+                <div className="text-xs text-[#0F172A]/70">
                   HTTP Status: <span className="font-bold">{publishErrorModal.httpStatus}</span>
                 </div>
               )}
               {publishErrorModal.responseExcerpt && (
-                <div className="bg-white/70 p-2 rounded border border-rose-200 text-[10px] overflow-x-auto max-h-20">
+                <div className="bg-white/70 p-2 rounded border border-rose-200 text-xs overflow-x-auto max-h-20">
                   {publishErrorModal.responseExcerpt}
                 </div>
               )}
@@ -1546,7 +1492,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
 
             <div className="bg-[#F4F1EB] p-3 rounded-xl border border-[#DDD7CD] text-xs text-[#0F172A]/80 space-y-1.5">
               <span className="font-bold block text-[#0F172A]">Why did this happen?</span>
-              <ul className="list-disc list-inside space-y-1 text-[11px] text-[#0F172A]/70">
+              <ul className="list-disc list-inside space-y-1 text-xs text-[#0F172A]/70">
                 <li>If using the n8n Test URL, ensure you clicked <strong>&quot;Listen for test event&quot;</strong> in your n8n Webhook node.</li>
                 <li>Verify your Webhook URL in Step 4 is correct and starts with <code>https://</code>.</li>
                 <li>Check that your n8n instance is publicly accessible and running.</li>
@@ -1560,14 +1506,14 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
                   setPublishErrorModal(null);
                   setIsEditingWebhook(true);
                 }}
-                className="px-4 py-2 text-xs font-bold text-[#1F6D52] hover:bg-[#F4F1EB] rounded-xl transition border border-[#1F6D52]/30 cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-[#1F6D52] hover:bg-[#F4F1EB] rounded-xl transition border border-[#1F6D52]/30 cursor-pointer"
               >
                 Change Webhook URL
               </button>
               <button
                 type="button"
                 onClick={() => setPublishErrorModal(null)}
-                className="px-5 py-2 text-xs font-bold text-white bg-[#1F6D52] hover:bg-[#185741] rounded-xl shadow-xs transition cursor-pointer"
+                className="px-5 py-2 text-xs font-semibold text-white bg-[#1F6D52] hover:bg-[#185741] rounded-xl shadow-xs transition cursor-pointer"
               >
                 Dismiss &amp; Review Post
               </button>
