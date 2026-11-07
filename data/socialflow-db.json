@@ -1,0 +1,843 @@
+{
+  "users": [
+    {
+      "id": "user_default",
+      "email": "aiautomationme@gmail.com",
+      "name": "AI Automation"
+    }
+  ],
+  "targets": [
+    {
+      "id": "tgt_1792337767644_f6xja",
+      "userId": "user_default",
+      "month": 10,
+      "year": 2026,
+      "targetCount": 8,
+      "createdAt": "2026-10-18T15:36:07.644Z",
+      "updatedAt": "2026-10-18T15:36:07.644Z"
+    }
+  ],
+  "videos": [
+    {
+      "userId": "user_default",
+      "filename": "1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+      "originalName": "Screen Recording 2025-12-04 221035.mp4",
+      "fileUrl": "/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+      "fileSize": 3625218,
+      "mimeType": "video/mp4",
+      "id": "vid_1792340160582_28ykw",
+      "uploadedAt": "2026-10-18T16:16:00.582Z"
+    }
+  ],
+  "posts": [
+    {
+      "id": "post_1792402066844_dpuq9",
+      "userId": "user_default",
+      "videoId": "vid_1792340160582_28ykw",
+      "title": "Screen Recording 2025-12-04 221035.mp4",
+      "defaultScheduledAt": null,
+      "platforms": {
+        "instagram": {
+          "enabled": true,
+          "caption": "thi si si a test post",
+          "scheduledAt": null,
+          "status": "pending_confirmation",
+          "attemptCount": 1,
+          "publishedAt": null,
+          "externalPostId": null,
+          "externalPostUrl": null,
+          "errorMessage": "Delivered to n8n Test Webhook. Test workflow trigger received (Development test run — not live on social platforms)."
+        }
+      },
+      "status": "pending_confirmation",
+      "createdAt": "2026-10-19T09:27:46.844Z",
+      "updatedAt": "2026-10-19T09:27:47.693Z"
+    },
+    {
+      "id": "post_1792401957099_kypct",
+      "userId": "user_default",
+      "videoId": "vid_1792340160582_28ykw",
+      "title": "Screen Recording 2025-12-04 221035.mp4",
+      "defaultScheduledAt": null,
+      "platforms": {
+        "facebook": {
+          "enabled": true,
+          "caption": "this is a test post \n#tet #n8n",
+          "scheduledAt": null,
+          "status": "pending_confirmation",
+          "attemptCount": 1,
+          "publishedAt": null,
+          "externalPostId": null,
+          "externalPostUrl": null,
+          "errorMessage": "Delivered to n8n Test Webhook. Test workflow trigger received (Development test run — not live on social platforms)."
+        }
+      },
+      "status": "pending_confirmation",
+      "createdAt": "2026-10-19T09:25:57.099Z",
+      "updatedAt": "2026-10-19T09:25:57.957Z"
+    },
+    {
+      "id": "post_1792395710691_avpbi",
+      "userId": "user_default",
+      "videoId": "vid_1792340160582_28ykw",
+      "title": "Screen Recording 2025-12-04 221035.mp4",
+      "defaultScheduledAt": null,
+      "platforms": {
+        "facebook": {
+          "enabled": true,
+          "caption": "this is a test post \n#ai #n8n ",
+          "scheduledAt": null,
+          "status": "failed",
+          "attemptCount": 1,
+          "errorMessage": "No n8n Webhook URL configured. Please configure your active n8n Test Webhook URL in Settings."
+        }
+      },
+      "status": "failed",
+      "createdAt": "2026-10-19T07:41:50.691Z",
+      "updatedAt": "2026-10-19T07:41:51.124Z"
+    },
+    {
+      "id": "post_1792340747918_uwvze",
+      "userId": "user_default",
+      "videoId": "vid_1792340160582_28ykw",
+      "title": "Screen Recording 2025-12-04 221035.mp4",
+      "defaultScheduledAt": null,
+      "platforms": {
+        "instagram": {
+          "enabled": true,
+          "caption": "this is a test post \n#ai #tiktok ",
+          "scheduledAt": null,
+          "status": "failed",
+          "attemptCount": 1,
+          "publishedAt": null,
+          "externalPostId": null,
+          "externalPostUrl": null,
+          "errorMessage": "Reset during audit: Falsely marked published without external webhook confirmation."
+        }
+      },
+      "status": "failed",
+      "createdAt": "2026-10-18T16:25:47.918Z",
+      "updatedAt": "2026-10-18T16:35:00.000Z"
+    }
+  ],
+  "platforms": {
+    "user_default": {
+      "tiktok": {
+        "platform": "tiktok",
+        "name": "TikTok",
+        "connected": true,
+        "requiredScopes": [
+          "video.upload",
+          "video.publish",
+          "user.info.basic"
+        ],
+        "grantedScopes": [
+          "video.upload,video.publish"
+        ],
+        "apiMode": "sandbox",
+        "details": "TikTok Content Posting API (Direct Post / Creator Inbox)",
+        "accountName": "@socialflow_creator",
+        "accountId": "acc_1792338291641",
+        "connectedAt": "2026-10-18T15:44:51.641Z"
+      },
+      "instagram": {
+        "platform": "instagram",
+        "name": "Instagram Reels",
+        "connected": true,
+        "requiredScopes": [
+          "instagram_basic",
+          "instagram_content_publish",
+          "pages_show_list"
+        ],
+        "grantedScopes": [
+          "instagram_basic,instagram_content_publish"
+        ],
+        "apiMode": "sandbox",
+        "details": "Meta Graph API - Instagram Media Container & Publish Endpoint",
+        "accountName": "@socialflow.official",
+        "accountId": "acc_1792335718911",
+        "connectedAt": "2026-10-18T15:01:58.911Z"
+      },
+      "facebook": {
+        "platform": "facebook",
+        "name": "Facebook Page",
+        "connected": true,
+        "requiredScopes": [
+          "pages_manage_posts",
+          "pages_read_engagement",
+          "publish_video"
+        ],
+        "grantedScopes": [
+          "publish_video,pages_manage_posts"
+        ],
+        "apiMode": "live",
+        "details": "Meta Graph API - Page Video Publishing Endpoint",
+        "accountName": "SocialFlow Media Studio",
+        "accountId": "acc_1792338304778",
+        "connectedAt": "2026-10-18T15:45:04.778Z"
+      }
+    }
+  },
+  "activity": [
+    {
+      "type": "post_failed",
+      "title": "Diagnostic Test Webhook Failed (instagram)",
+      "description": "n8n Test Webhook Inactive (HTTP 404): In n8n, test webhooks only listen for ONE test call after clicking \"Execute workflow\". Switch to the Production URL (/webhook/...) and toggle the workflow Active switch in n8n to ON.",
+      "id": "act_1792936848939_gllyr",
+      "userId": "user_default",
+      "timestamp": "2026-10-25T14:00:48.939Z"
+    },
+    {
+      "type": "video_deleted",
+      "title": "Deleted video \"speed_test.mp4\"",
+      "description": "Video file and record removed from library",
+      "videoId": "vid_1792482866231_6qx53",
+      "id": "act_1792483355777_r2w5s",
+      "userId": "user_default",
+      "timestamp": "2026-10-20T08:02:35.777Z"
+    },
+    {
+      "type": "video_deleted",
+      "title": "Deleted video \"speed_test_optimized.mp4\"",
+      "description": "Video file and record removed from library",
+      "videoId": "vid_1792483345392_ojikx",
+      "id": "act_1792483355772_bpvp4",
+      "userId": "user_default",
+      "timestamp": "2026-10-20T08:02:35.772Z"
+    },
+    {
+      "type": "video_uploaded",
+      "title": "Uploaded video \"speed_test_optimized.mp4\"",
+      "description": "File size: 0.1 MB",
+      "videoId": "vid_1792483345392_ojikx",
+      "id": "act_1792483345393_djvk7",
+      "userId": "user_default",
+      "timestamp": "2026-10-20T08:02:25.393Z"
+    },
+    {
+      "type": "video_uploaded",
+      "title": "Uploaded video \"speed_test.mp4\"",
+      "description": "File size: 0.1 MB",
+      "videoId": "vid_1792482866231_6qx53",
+      "id": "act_1792482866231_5csek",
+      "userId": "user_default",
+      "timestamp": "2026-10-20T07:54:26.231Z"
+    },
+    {
+      "type": "video_deleted",
+      "title": "Deleted video \"replaced_sample.mp4\"",
+      "description": "Video file and record removed from library",
+      "videoId": "vid_1792405128610_l9gkq",
+      "id": "act_1792405128647_vs67m",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T10:18:48.647Z"
+    },
+    {
+      "type": "video_uploaded",
+      "title": "Replaced video file for \"replaced_sample.mp4\"",
+      "description": "New file size: 0.1 MB",
+      "videoId": "vid_1792405128610_l9gkq",
+      "id": "act_1792405128640_g7jv9",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T10:18:48.640Z"
+    },
+    {
+      "type": "video_uploaded",
+      "title": "Uploaded video \"sample_test_lifecycle.mp4\"",
+      "description": "File size: 0.1 MB",
+      "videoId": "vid_1792405128610_l9gkq",
+      "id": "act_1792405128610_ejokx",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T10:18:48.610Z"
+    },
+    {
+      "type": "post_failed",
+      "title": "Diagnostic Test Webhook Failed",
+      "description": "n8n webhook returned HTTP 404 (Not Found): {\"code\":404,\"message\":\"The requested webhook \\\"socialmedia\\\" is not registered.\",\"hint\":\"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for on",
+      "id": "act_1792404898790_rna8m",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T10:14:58.790Z"
+    },
+    {
+      "type": "post_scheduled",
+      "title": "Updated n8n Webhook URL",
+      "description": "Configured: https://mannanautomate.app.n8n.cloud/webhook-test/socialmedi... (Test URL)",
+      "id": "act_1792404877553_aa0du",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T10:14:37.553Z"
+    },
+    {
+      "type": "post_scheduled",
+      "platform": "instagram",
+      "title": "Webhook event dispatched for \"Screen Recording 2025-12-04 221035.mp4\" (Instagram Reels)",
+      "description": "Delivered to n8n Test Webhook. Test workflow trigger received (Development test run — not live on social platforms).",
+      "postId": "post_1792402066844_dpuq9",
+      "videoId": "vid_1792340160582_28ykw",
+      "id": "act_1792402067693_fcsxw",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T09:27:47.693Z"
+    },
+    {
+      "type": "post_created",
+      "title": "Created post \"Screen Recording 2025-12-04 221035.mp4\"",
+      "description": "Saved draft for 1 destination platform(s)",
+      "postId": "post_1792402066844_dpuq9",
+      "videoId": "vid_1792340160582_28ykw",
+      "id": "act_1792402066844_78kgw",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T09:27:46.844Z"
+    },
+    {
+      "type": "post_scheduled",
+      "title": "Diagnostic Test Webhook Sent",
+      "description": "Payload successfully delivered to n8n Webhook node (HTTP 200 OK in 650ms). Trigger event confirmed.",
+      "id": "act_1792402023089_g2z5n",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T09:27:03.089Z"
+    },
+    {
+      "type": "post_failed",
+      "title": "Diagnostic Test Webhook Failed",
+      "description": "n8n webhook returned HTTP 404 (Not Found): {\"code\":404,\"message\":\"The requested webhook \\\"socialmedia\\\" is not registered.\",\"hint\":\"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for on",
+      "id": "act_1792401991611_26wrh",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T09:26:31.611Z"
+    },
+    {
+      "type": "post_scheduled",
+      "platform": "facebook",
+      "title": "Webhook event dispatched for \"Screen Recording 2025-12-04 221035.mp4\" (Facebook Page)",
+      "description": "Delivered to n8n Test Webhook. Test workflow trigger received (Development test run — not live on social platforms).",
+      "postId": "post_1792401957099_kypct",
+      "videoId": "vid_1792340160582_28ykw",
+      "id": "act_1792401957957_n2cmr",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T09:25:57.957Z"
+    },
+    {
+      "type": "post_created",
+      "title": "Created post \"Screen Recording 2025-12-04 221035.mp4\"",
+      "description": "Saved draft for 1 destination platform(s)",
+      "postId": "post_1792401957099_kypct",
+      "videoId": "vid_1792340160582_28ykw",
+      "id": "act_1792401957099_6mcsw",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T09:25:57.099Z"
+    },
+    {
+      "type": "post_scheduled",
+      "title": "Diagnostic Test Webhook Sent",
+      "description": "Payload successfully delivered to n8n Webhook node (HTTP 200 OK in 1210ms). Trigger event confirmed.",
+      "id": "act_1792401901730_teyrp",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T09:25:01.730Z"
+    },
+    {
+      "type": "post_scheduled",
+      "title": "Updated n8n Webhook URL",
+      "description": "Configured: https://mannanautomate.app.n8n.cloud/webhook-test/socialmedi... (Test URL)",
+      "id": "act_1792401898225_c0c1b",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T09:24:58.225Z"
+    },
+    {
+      "type": "post_scheduled",
+      "title": "Cleared n8n Webhook URL",
+      "description": "Webhook URL cleared",
+      "id": "act_1792396692630_h7f8b",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T07:58:12.630Z"
+    },
+    {
+      "type": "post_scheduled",
+      "title": "Updated n8n Webhook URL",
+      "description": "Configured: https://example.com/webhook-test/demo123... (Test URL)",
+      "id": "act_1792396685427_3fzaj",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T07:58:05.427Z"
+    },
+    {
+      "type": "post_failed",
+      "platform": "facebook",
+      "title": "Failed publishing \"Screen Recording 2025-12-04 221035.mp4\" to Facebook Page",
+      "description": "No n8n Webhook URL configured. Please configure your active n8n Test Webhook URL in Settings.",
+      "postId": "post_1792395710691_avpbi",
+      "videoId": "vid_1792340160582_28ykw",
+      "id": "act_1792395711124_im9m9",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T07:41:51.124Z"
+    },
+    {
+      "type": "post_created",
+      "title": "Created post \"Screen Recording 2025-12-04 221035.mp4\"",
+      "description": "Saved draft for 1 destination platform(s)",
+      "postId": "post_1792395710691_avpbi",
+      "videoId": "vid_1792340160582_28ykw",
+      "id": "act_1792395710692_a8slj",
+      "userId": "user_default",
+      "timestamp": "2026-10-19T07:41:50.692Z"
+    },
+    {
+      "type": "post_failed",
+      "platform": "instagram",
+      "title": "Unverified publishing record reset for \"Screen Recording 2025-12-04 221035.mp4\"",
+      "description": "Publication status reset: No live post or external confirmation existed on Instagram.",
+      "postId": "post_1792340747918_uwvze",
+      "videoId": "vid_1792340160582_28ykw",
+      "id": "act_audit_reset_unverified",
+      "userId": "user_default",
+      "timestamp": "2026-10-18T16:35:00.000Z"
+    },
+    {
+      "type": "post_created",
+      "title": "Created post \"Screen Recording 2025-12-04 221035.mp4\"",
+      "description": "Saved draft for 1 destination platform(s)",
+      "postId": "post_1792340747918_uwvze",
+      "videoId": "vid_1792340160582_28ykw",
+      "id": "act_1792340747918_ib8ci",
+      "userId": "user_default",
+      "timestamp": "2026-10-18T16:25:47.918Z"
+    },
+    {
+      "type": "video_uploaded",
+      "title": "Uploaded video \"Screen Recording 2025-12-04 221035.mp4\"",
+      "description": "File size: 3.5 MB",
+      "videoId": "vid_1792340160582_28ykw",
+      "id": "act_1792340160582_ttyvo",
+      "userId": "user_default",
+      "timestamp": "2026-10-18T16:16:00.582Z"
+    },
+    {
+      "type": "platform_connected",
+      "platform": "facebook",
+      "title": "Connected to Facebook Page",
+      "description": "Account: SocialFlow Media Studio",
+      "id": "act_1792338304778_5tn4p",
+      "userId": "user_default",
+      "timestamp": "2026-10-18T15:45:04.778Z"
+    },
+    {
+      "type": "platform_connected",
+      "platform": "tiktok",
+      "title": "Connected to TikTok",
+      "description": "Account: @socialflow_creator",
+      "id": "act_1792338291641_hwdoi",
+      "userId": "user_default",
+      "timestamp": "2026-10-18T15:44:51.641Z"
+    },
+    {
+      "type": "target_created",
+      "title": "Set New Target for October 2026",
+      "description": "Goal of 8 confirmed published posts",
+      "id": "act_1792337767644_3u1vh",
+      "userId": "user_default",
+      "timestamp": "2026-10-18T15:36:07.644Z"
+    },
+    {
+      "type": "platform_connected",
+      "platform": "instagram",
+      "title": "Connected to Instagram Reels",
+      "description": "Account: @socialflow.official",
+      "id": "act_1792335718911_uxbq5",
+      "userId": "user_default",
+      "timestamp": "2026-10-18T15:01:58.911Z"
+    }
+  ],
+  "settings": {
+    "webhookUrl": "https://mannanautomate.app.n8n.cloud/webhook-test/socialmedia",
+    "timeZone": "Asia/Karachi"
+  },
+  "webhookLogs": [
+    {
+      "url": "https://mannanautomate.app.n8n.cloud/webhook-test/socialmedia",
+      "event": "socialflow.publish",
+      "platform": "instagram",
+      "isTestEvent": true,
+      "httpStatus": 404,
+      "statusText": "Not Found",
+      "success": false,
+      "durationMs": 1236,
+      "requestPayload": {
+        "event": "socialflow.webhook_test",
+        "mode": "direct_file_multipart",
+        "isTestEvent": true,
+        "diagnosticMode": true,
+        "platform": "instagram",
+        "platformName": "Instagram",
+        "videoTitle": "Screen Recording 2025-12-04 221035.mp4",
+        "fileName": "Screen Recording 2025-12-04 221035.mp4",
+        "fileSize": 152212,
+        "mimeType": "video/mp4",
+        "caption": "Diagnostic test event from SocialFlow — testing n8n Webhook node trigger listener",
+        "realtime": {
+          "timestamp": "2026-10-25T14:00:47.689Z",
+          "date": "2026-10-25",
+          "day": "Sunday",
+          "month": "October",
+          "year": 2026,
+          "time": "2:00:47 PM",
+          "formatted": "Sunday, 25 October 2026 at 2:00:47 PM"
+        }
+      },
+      "responseBody": "{\"code\":404,\"message\":\"The requested webhook \\\"socialmedia\\\" is not registered.\",\"hint\":\"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)\"}",
+      "errorMessage": "HTTP 404: {\"code\":404,\"message\":\"The requested webhook \\\"socialmedia\\\" is not registered.\",\"hint\":\"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)\"}",
+      "id": "wh_1792936848938_vty5o",
+      "timestamp": "2026-10-25T14:00:48.938Z"
+    },
+    {
+      "url": "https://mannanautomate.app.n8n.cloud/webhook-test/socialmedia",
+      "event": "socialflow.publish",
+      "platform": "instagram",
+      "isTestEvent": true,
+      "httpStatus": 404,
+      "statusText": "Not Found",
+      "success": false,
+      "durationMs": 1212,
+      "requestPayload": {
+        "event": "socialflow.webhook_test",
+        "mode": "direct_file_multipart",
+        "isTestEvent": true,
+        "diagnosticMode": true,
+        "platform": "instagram",
+        "platformName": "Instagram",
+        "videoTitle": "Screen Recording 2025-12-04 221035.mp4",
+        "fileName": "Screen Recording 2025-12-04 221035.mp4",
+        "fileSize": 152212,
+        "mimeType": "video/mp4",
+        "caption": "Diagnostic test event from SocialFlow — testing n8n Webhook node trigger listener",
+        "realtime": {
+          "timestamp": "2026-10-19T10:14:57.565Z",
+          "date": "2026-10-19",
+          "day": "Monday",
+          "month": "October",
+          "year": 2026,
+          "time": "10:14:57 AM",
+          "formatted": "Monday, 19 October 2026 at 10:14:57 AM"
+        }
+      },
+      "responseBody": "{\"code\":404,\"message\":\"The requested webhook \\\"socialmedia\\\" is not registered.\",\"hint\":\"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)\"}",
+      "errorMessage": "HTTP 404: {\"code\":404,\"message\":\"The requested webhook \\\"socialmedia\\\" is not registered.\",\"hint\":\"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)\"}",
+      "id": "wh_1792404898789_foaww",
+      "timestamp": "2026-10-19T10:14:58.789Z"
+    },
+    {
+      "url": "http://127.0.0.1:29980",
+      "event": "socialflow.publish",
+      "platform": "instagram",
+      "isTestEvent": false,
+      "httpStatus": 200,
+      "statusText": "OK",
+      "success": true,
+      "durationMs": 67,
+      "requestPayload": {
+        "event": "socialflow.publish",
+        "mode": "direct_file_multipart",
+        "platform": "instagram",
+        "platformName": "Instagram",
+        "videoTitle": "Screen Recording 2025-12-04 221035.mp4",
+        "fileName": "Screen Recording 2025-12-04 221035.mp4",
+        "fileSize": 152212,
+        "mimeType": "video/mp4",
+        "caption": "My exact direct video upload test caption",
+        "realtime": {
+          "timestamp": "2026-10-19T09:53:14.471Z",
+          "date": "2026-10-19",
+          "day": "Monday",
+          "month": "October",
+          "year": 2026,
+          "time": "9:53:14 AM",
+          "formatted": "Monday, 19 October 2026 at 9:53:14 AM"
+        }
+      },
+      "responseBody": "{\"status\":\"published\",\"externalPostId\":\"test_post_123\",\"externalPostUrl\":\"https://instagram.com/p/test\"}",
+      "id": "wh_1792403594688_8uy1b",
+      "timestamp": "2026-10-19T09:53:14.688Z"
+    },
+    {
+      "url": "http://127.0.0.1:47312",
+      "event": "socialflow.publish",
+      "platform": "instagram",
+      "isTestEvent": true,
+      "httpStatus": 200,
+      "statusText": "OK",
+      "success": true,
+      "durationMs": 56,
+      "requestPayload": {
+        "event": "socialflow.webhook_test",
+        "mode": "direct_file_multipart",
+        "isTestEvent": true,
+        "diagnosticMode": true,
+        "platform": "instagram",
+        "platformName": "Instagram",
+        "videoTitle": "Screen Recording 2025-12-04 221035.mp4",
+        "fileName": "Screen Recording 2025-12-04 221035.mp4",
+        "fileSize": 152212,
+        "mimeType": "video/mp4",
+        "caption": "Diagnostic test event from SocialFlow — testing n8n Webhook node trigger listener",
+        "realtime": {
+          "timestamp": "2026-10-19T09:53:01.449Z",
+          "date": "2026-10-19",
+          "day": "Monday",
+          "month": "October",
+          "year": 2026,
+          "time": "9:53:01 AM",
+          "formatted": "Monday, 19 October 2026 at 9:53:01 AM"
+        }
+      },
+      "responseBody": "{\"status\":\"ok\",\"receivedBytes\":460002}",
+      "id": "wh_1792403581621_ry14r",
+      "timestamp": "2026-10-19T09:53:01.621Z"
+    },
+    {
+      "url": "https://mannanautomate.app.n8n.cloud/webhook-test/socialmedia",
+      "event": "socialflow.publish",
+      "platform": "instagram",
+      "isTestEvent": true,
+      "httpStatus": 200,
+      "statusText": "OK",
+      "success": true,
+      "durationMs": 423,
+      "requestPayload": {
+        "event": "socialflow.publish",
+        "platform": "instagram",
+        "isTestWorkflow": true,
+        "videoUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+        "videoTitle": "Screen Recording 2025-12-04 221035.mp4",
+        "caption": "thi si si a test post",
+        "description": "thi si si a test post",
+        "realtime": {
+          "timestamp": "2026-10-19T09:27:47.269Z",
+          "date": "2026-10-19",
+          "day": "Monday",
+          "month": "October",
+          "year": 2026,
+          "time": "9:27:47 AM",
+          "formatted": "Monday, 19 October 2026 at 9:27:47 AM"
+        },
+        "video": {
+          "id": "vid_1792340160582_28ykw",
+          "filename": "1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "originalName": "Screen Recording 2025-12-04 221035.mp4",
+          "url": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "fileUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "downloadUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "fileSize": 3625218,
+          "mimeType": "video/mp4"
+        },
+        "content": {
+          "caption": "thi si si a test post",
+          "description": "thi si si a test post",
+          "tiktokSettings": null
+        },
+        "schedule": {
+          "scheduledAt": null
+        },
+        "timestamp": "2026-10-19T09:27:47.269Z"
+      },
+      "responseBody": "{\"message\":\"Workflow was started\"}",
+      "id": "wh_1792402067692_49qqs",
+      "timestamp": "2026-10-19T09:27:47.692Z"
+    },
+    {
+      "url": "https://mannanautomate.app.n8n.cloud/webhook-test/socialmedia",
+      "event": "socialflow.publish",
+      "platform": "instagram",
+      "isTestEvent": true,
+      "httpStatus": 200,
+      "statusText": "OK",
+      "success": true,
+      "durationMs": 650,
+      "requestPayload": {
+        "event": "socialflow.webhook_test",
+        "isTestEvent": true,
+        "diagnosticMode": true,
+        "platform": "instagram",
+        "videoUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+        "caption": "Diagnostic test event from SocialFlow — testing n8n Webhook node trigger listener",
+        "description": "SocialFlow Diagnostic Test Event",
+        "realtime": {
+          "timestamp": "2026-10-19T09:27:02.438Z",
+          "date": "2026-10-19",
+          "day": "Monday",
+          "month": "October",
+          "year": 2026,
+          "time": "9:27:02 AM",
+          "formatted": "Monday, 19 October 2026 at 9:27:02 AM"
+        },
+        "video": {
+          "id": "vid_1792340160582_28ykw",
+          "filename": "1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "originalName": "Screen Recording 2025-12-04 221035.mp4",
+          "url": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "fileUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "downloadUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "fileSize": 3625218,
+          "mimeType": "video/mp4"
+        },
+        "content": {
+          "caption": "Diagnostic test event from SocialFlow — testing n8n Webhook node trigger listener",
+          "description": "SocialFlow Diagnostic Test Event",
+          "tiktokSettings": null
+        },
+        "schedule": {
+          "scheduledAt": null
+        },
+        "timestamp": "2026-10-19T09:27:02.438Z"
+      },
+      "responseBody": "{\"message\":\"Workflow was started\"}",
+      "id": "wh_1792402023088_t4ogu",
+      "timestamp": "2026-10-19T09:27:03.088Z"
+    },
+    {
+      "url": "https://mannanautomate.app.n8n.cloud/webhook-test/socialmedia",
+      "event": "socialflow.publish",
+      "platform": "instagram",
+      "isTestEvent": true,
+      "httpStatus": 404,
+      "statusText": "Not Found",
+      "success": false,
+      "durationMs": 324,
+      "requestPayload": {
+        "event": "socialflow.webhook_test",
+        "isTestEvent": true,
+        "diagnosticMode": true,
+        "platform": "instagram",
+        "videoUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+        "caption": "Diagnostic test event from SocialFlow — testing n8n Webhook node trigger listener",
+        "description": "SocialFlow Diagnostic Test Event",
+        "realtime": {
+          "timestamp": "2026-10-19T09:26:31.283Z",
+          "date": "2026-10-19",
+          "day": "Monday",
+          "month": "October",
+          "year": 2026,
+          "time": "9:26:31 AM",
+          "formatted": "Monday, 19 October 2026 at 9:26:31 AM"
+        },
+        "video": {
+          "id": "vid_1792340160582_28ykw",
+          "filename": "1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "originalName": "Screen Recording 2025-12-04 221035.mp4",
+          "url": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "fileUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "downloadUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "fileSize": 3625218,
+          "mimeType": "video/mp4"
+        },
+        "content": {
+          "caption": "Diagnostic test event from SocialFlow — testing n8n Webhook node trigger listener",
+          "description": "SocialFlow Diagnostic Test Event",
+          "tiktokSettings": null
+        },
+        "schedule": {
+          "scheduledAt": null
+        },
+        "timestamp": "2026-10-19T09:26:31.283Z"
+      },
+      "responseBody": "{\"code\":404,\"message\":\"The requested webhook \\\"socialmedia\\\" is not registered.\",\"hint\":\"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)\"}",
+      "errorMessage": "HTTP 404: {\"code\":404,\"message\":\"The requested webhook \\\"socialmedia\\\" is not registered.\",\"hint\":\"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)\"}",
+      "id": "wh_1792401991610_4324k",
+      "timestamp": "2026-10-19T09:26:31.610Z"
+    },
+    {
+      "url": "https://mannanautomate.app.n8n.cloud/webhook-test/socialmedia",
+      "event": "socialflow.publish",
+      "platform": "facebook",
+      "isTestEvent": true,
+      "httpStatus": 200,
+      "statusText": "OK",
+      "success": true,
+      "durationMs": 425,
+      "requestPayload": {
+        "event": "socialflow.publish",
+        "platform": "facebook",
+        "isTestWorkflow": true,
+        "videoUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+        "videoTitle": "Screen Recording 2025-12-04 221035.mp4",
+        "caption": "this is a test post \n#tet #n8n",
+        "description": "this is a test post \n#tet #n8n",
+        "realtime": {
+          "timestamp": "2026-10-19T09:25:57.531Z",
+          "date": "2026-10-19",
+          "day": "Monday",
+          "month": "October",
+          "year": 2026,
+          "time": "9:25:57 AM",
+          "formatted": "Monday, 19 October 2026 at 9:25:57 AM"
+        },
+        "video": {
+          "id": "vid_1792340160582_28ykw",
+          "filename": "1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "originalName": "Screen Recording 2025-12-04 221035.mp4",
+          "url": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "fileUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "downloadUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "fileSize": 3625218,
+          "mimeType": "video/mp4"
+        },
+        "content": {
+          "caption": "this is a test post \n#tet #n8n",
+          "description": "this is a test post \n#tet #n8n",
+          "tiktokSettings": null
+        },
+        "schedule": {
+          "scheduledAt": null
+        },
+        "timestamp": "2026-10-19T09:25:57.531Z"
+      },
+      "responseBody": "{\"message\":\"Workflow was started\"}",
+      "id": "wh_1792401957956_od211",
+      "timestamp": "2026-10-19T09:25:57.956Z"
+    },
+    {
+      "url": "https://mannanautomate.app.n8n.cloud/webhook-test/socialmedia",
+      "event": "socialflow.publish",
+      "platform": "instagram",
+      "isTestEvent": true,
+      "httpStatus": 200,
+      "statusText": "OK",
+      "success": true,
+      "durationMs": 1210,
+      "requestPayload": {
+        "event": "socialflow.webhook_test",
+        "isTestEvent": true,
+        "diagnosticMode": true,
+        "platform": "instagram",
+        "videoUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+        "caption": "Diagnostic test event from SocialFlow — testing n8n Webhook node trigger listener",
+        "description": "SocialFlow Diagnostic Test Event",
+        "realtime": {
+          "timestamp": "2026-10-19T09:25:00.510Z",
+          "date": "2026-10-19",
+          "day": "Monday",
+          "month": "October",
+          "year": 2026,
+          "time": "9:25:00 AM",
+          "formatted": "Monday, 19 October 2026 at 9:25:00 AM"
+        },
+        "video": {
+          "id": "vid_1792340160582_28ykw",
+          "filename": "1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "originalName": "Screen Recording 2025-12-04 221035.mp4",
+          "url": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "fileUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "downloadUrl": "https://ais-dev-sva47wpro75ke6nogje5zs-511158616202.asia-east1.run.app/uploads/videos/1792340160550-923347015-Screen_Recording_2025-12-04_221035.mp4",
+          "fileSize": 3625218,
+          "mimeType": "video/mp4"
+        },
+        "content": {
+          "caption": "Diagnostic test event from SocialFlow — testing n8n Webhook node trigger listener",
+          "description": "SocialFlow Diagnostic Test Event",
+          "tiktokSettings": null
+        },
+        "schedule": {
+          "scheduledAt": null
+        },
+        "timestamp": "2026-10-19T09:25:00.510Z"
+      },
+      "responseBody": "{\"message\":\"Workflow was started\"}",
+      "id": "wh_1792401901729_gygat",
+      "timestamp": "2026-10-19T09:25:01.729Z"
+    }
+  ]
+}

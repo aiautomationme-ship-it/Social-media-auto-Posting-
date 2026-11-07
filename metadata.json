@@ -1,0 +1,6 @@
+{
+  "name": "SocialFlow",
+  "description": "Multi-platform social media publishing, scheduling, and monthly target tracking for TikTok, Instagram Reels, and Facebook Pages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
