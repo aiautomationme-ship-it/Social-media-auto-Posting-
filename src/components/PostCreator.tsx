@@ -654,22 +654,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({
             ) : null}
           </div>
 
-          {/* Internal Title (Optional) */}
-          <div className="bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl p-5 shadow-xs">
-            <label className="block text-sm font-bold text-[#0F172A] mb-1">
-              Campaign / Internal Post Title
-            </label>
-            <p className="text-xs text-[#0F172A]/60 mb-2">
-              Optional reference title for calendar labels and history tracking. Defaults to the video filename if blank.
-            </p>
-            <input
-              type="text"
-              value={postTitle}
-              onChange={(e) => setPostTitle(e.target.value)}
-              placeholder="e.g. October Product Launch Reel"
-              className="w-full bg-[#F8F6F1] border border-[#DDD7CD] rounded-xl px-3.5 py-2.5 text-[#0F172A] text-xs font-medium focus:outline-none focus:border-[#1F6D52] shadow-2xs"
-            />
-          </div>
+
 
           {/* STEP 2: Explicit Platform Selection (No automatic pre-selection) */}
           <div className="bg-[#F4F1EB] border border-[#DDD7CD] rounded-2xl p-5 shadow-xs">
